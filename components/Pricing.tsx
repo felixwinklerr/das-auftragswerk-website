@@ -181,10 +181,10 @@ export default function Pricing() {
                 Handwerker-Szenario
               </p>
               <p className="text-text-mid text-sm leading-relaxed">
-                2 neue Aufträge/Monat x €800 = <span className="font-semibold text-primary">€1.600/Monat</span>.
+                2 neue Aufträge/Monat x €800 = <span className="font-semibold text-primary">€1.600/Monat zusätzlich.</span>
               </p>
               <p className="text-accent font-semibold mt-2 text-sm">
-                Amortisierung: Monat 3.
+                Dauerhaft. Ohne Ihr Zutun.
               </p>
             </motion.div>
             <motion.div
@@ -199,7 +199,7 @@ export default function Pricing() {
                 1 Privatpatient/Monat x €2.500 LTV.
               </p>
               <p className="text-accent font-semibold mt-2 text-sm">
-                Amortisierung: Woche&nbsp;1.
+                Bereits ab Woche 1 im Plus.
               </p>
             </motion.div>
           </div>

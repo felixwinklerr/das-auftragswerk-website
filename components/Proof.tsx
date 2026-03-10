@@ -69,20 +69,6 @@ export default function Proof() {
           </motion.div>
         </div>
 
-        {/* Honest Note */}
-        <motion.p
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeIn}
-          custom={3}
-          className="mx-auto mt-10 max-w-2xl text-center text-sm italic text-text-muted"
-        >
-          Testphase l&auml;uft seit M&auml;rz 2026. Erste
-          Branchen-Fallstudien folgen. Diese Mechanik ist erprobt, in
-          &auml;hnlichen Setups.
-        </motion.p>
-
         {/* Proof Bar */}
         <motion.div
           initial="hidden"
