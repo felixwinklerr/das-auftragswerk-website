@@ -60,11 +60,12 @@ export default function Proof() {
             className="rounded-2xl bg-white p-8 shadow-md"
           >
             <h3 className="mb-4 text-xl font-bold text-text-dark">
-              Career OS (Coach, Schweiz)
+              Inés Constantin, Career Coach
             </h3>
             <blockquote className="mb-4 border-l-4 border-accent pl-4 text-text-mid italic leading-relaxed">
-              &ldquo;Vom Chaos zur Struktur. Automatisiertes System, Klienten
-              kommen jetzt direkt auf mich zu.&rdquo;
+              &ldquo;Klienten fragen jetzt von sich aus an, statt umgekehrt.
+              Das System &uuml;bernimmt, was ich fr&uuml;her stundenlang
+              manuell gemacht habe.&rdquo;
             </blockquote>
           </motion.div>
         </div>
