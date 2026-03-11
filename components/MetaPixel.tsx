@@ -1,7 +1,8 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getConsent } from "@/components/CookieBanner";
 
 const PIXEL_ID = "2120755065444667";
 
@@ -43,39 +44,62 @@ function fireCapiEvent(eventName: string, eventId: string) {
   }).catch(() => {/* silent — non-critical */});
 }
 
-export function MetaPixel() {
-  useEffect(() => {
-    // Fire server-side PageView (deduplication with pixel)
-    const pvId = crypto.randomUUID();
-    if (typeof window.fbq === "function") {
-      window.fbq("track", "PageView", {}, { eventID: pvId });
-    }
-    fireCapiEvent("PageView", pvId);
+function initPixelAndEvents() {
+  // Fire PageView
+  const pvId = crypto.randomUUID();
+  if (typeof window.fbq === "function") {
+    window.fbq("track", "PageView", {}, { eventID: pvId });
+  }
+  fireCapiEvent("PageView", pvId);
 
-    // Listen for GHL booking completion postMessage
-    const handleMessage = (event: MessageEvent) => {
-      const d = event.data;
-      if (!d) return;
+  // Listen for GHL booking completion postMessage
+  const handleMessage = (event: MessageEvent) => {
+    const d = event.data;
+    if (!d) return;
 
-      const isBooking =
-        d.event === "booking-confirmed" ||
-        d.type === "booking-confirmed" ||
-        d.event_type === "APPOINTMENT_BOOKED" ||
-        d.iframeEvent === "appointment-booked" ||
-        (typeof d === "string" && d.includes("appointment-booked"));
+    const isBooking =
+      d.event === "booking-confirmed" ||
+      d.type === "booking-confirmed" ||
+      d.event_type === "APPOINTMENT_BOOKED" ||
+      d.iframeEvent === "appointment-booked" ||
+      (typeof d === "string" && d.includes("appointment-booked"));
 
-      if (isBooking) {
-        const leadId = crypto.randomUUID();
-        if (typeof window.fbq === "function") {
-          window.fbq("track", "Lead", {}, { eventID: leadId });
-        }
-        fireCapiEvent("Lead", leadId);
+    if (isBooking) {
+      const leadId = crypto.randomUUID();
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "Lead", {}, { eventID: leadId });
       }
-    };
+      fireCapiEvent("Lead", leadId);
+    }
+  };
 
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
+  window.addEventListener("message", handleMessage);
+  // Note: cleanup not possible here since we need persistent listener — acceptable for SPA
+}
+
+export function MetaPixel() {
+  const [consented, setConsented] = useState(false);
+
+  useEffect(() => {
+    // Check existing consent on mount
+    if (getConsent() === "accepted") {
+      setConsented(true);
+      return;
+    }
+
+    // Wait for user to accept consent banner
+    const handler = () => setConsented(true);
+    window.addEventListener("da_consent_accepted", handler);
+    return () => window.removeEventListener("da_consent_accepted", handler);
   }, []);
+
+  useEffect(() => {
+    if (consented) {
+      initPixelAndEvents();
+    }
+  }, [consented]);
+
+  if (!consented) return null;
 
   return (
     <>
