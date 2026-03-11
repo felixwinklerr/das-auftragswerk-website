@@ -25,13 +25,18 @@ export default function Impressum() {
               Angaben gemäß § 5 TMG
             </h2>
             <p>
-              Felix Winkler
+              G.T. Marketing Management &amp; Consulting UG (haftungsbeschränkt)
               <br />
-              [Adresse folgt]
+              Friedlandstr. 19
               <br />
-              [PLZ Ort]
+              96106 Ebern, Bayern
               <br />
               Deutschland
+            </p>
+            <p className="mt-3">
+              Handelsregister: HRB 11553
+              <br />
+              Geschäftsführer: Jonah Tholeikis
             </p>
           </section>
 
@@ -40,11 +45,22 @@ export default function Impressum() {
             <p>
               E-Mail:{" "}
               <a
-                href="mailto:kontakt@dasauftragswerk.de"
+                href="mailto:info@dasauftragswerk.de"
                 className="text-primary hover:underline"
               >
-                kontakt@dasauftragswerk.de
+                info@dasauftragswerk.de
               </a>
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-text-dark">
+              Umsatzsteuer-ID
+            </h2>
+            <p>
+              Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:
+              <br />
+              DE 368241327
             </p>
           </section>
 
@@ -53,9 +69,13 @@ export default function Impressum() {
               Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
             </h2>
             <p>
-              Felix Winkler
+              Jonah Tholeikis
               <br />
-              [Adresse wie oben]
+              Friedlandstr. 19
+              <br />
+              96106 Ebern, Bayern
+              <br />
+              Deutschland
             </p>
           </section>
 
