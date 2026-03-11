@@ -19,9 +19,9 @@ const layers: Layer[] = [
   },
   {
     number: 2,
-    name: "Lead-Capture",
+    name: "Anfragen auffangen",
     details: "Formular + Click-to-Call + WhatsApp Business Link",
-    quote: "Wer klickt, wird aufgefangen: auf jedem Ger\u00E4t.",
+    quote: "Wer klickt, landet direkt bei Ihnen: auf jedem Ger\u00E4t.",
   },
   {
     number: 3,
@@ -39,8 +39,8 @@ const layers: Layer[] = [
   },
   {
     number: 5,
-    name: "Tracking",
-    details: "Lead-Dashboard: Quellen, Volumen, Conversion",
+    name: "Überblick behalten",
+    details: "Dashboard: Woher kommen Anfragen, wie viele, was wird draus",
     quote: "Sie sehen was funktioniert, und steuern selbst.",
   },
 ];

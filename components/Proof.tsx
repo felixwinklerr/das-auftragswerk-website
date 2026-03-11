@@ -70,6 +70,23 @@ export default function Proof() {
           </motion.div>
         </div>
 
+        {/* Bridge text: connects proof to Handwerker ICP */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+          custom={3}
+          className="mt-8 rounded-2xl bg-white border border-gray-100 shadow-sm p-6 text-center"
+        >
+          <p className="text-text-muted text-sm mb-1 font-semibold uppercase tracking-wide">Die Mechanik dahinter</p>
+          <p className="text-text-dark font-medium leading-relaxed">
+            Ob Handwerksbetrieb, Zahnarztpraxis oder Coach: das System ist dasselbe.
+            Automatisch auffangen, sofort antworten, nachfassen bis der Termin steht.
+            Branche ändert sich. Mechanik nicht.
+          </p>
+        </motion.div>
+
         {/* Proof Bar */}
         <motion.div
           initial="hidden"
@@ -77,7 +94,7 @@ export default function Proof() {
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeIn}
           custom={4}
-          className="mt-8 rounded-xl bg-primary py-4 px-6 text-center font-semibold text-white"
+          className="mt-4 rounded-xl bg-primary py-4 px-6 text-center font-semibold text-white"
         >
           Belegt durch 14-t&auml;gige Umsetzung + 60-Tage Erfolgsgarantie
         </motion.div>

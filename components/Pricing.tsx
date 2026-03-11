@@ -143,7 +143,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Guarantee block */}
+        {/* Price + Guarantee block */}
         <motion.div
           className="max-w-2xl mx-auto border-2 border-primary bg-bg-blue rounded-2xl p-8 mb-14"
           initial={{ opacity: 0, y: 20 }}
@@ -151,14 +151,20 @@ export default function Pricing() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.15 }}
         >
-          <h3 className="text-primary font-bold text-2xl mb-3 text-center">
-            60-Tage Erfolgsgarantie
-          </h3>
-          <p className="text-text-mid leading-relaxed text-center">
-            Das System generiert 3+ qualifizierte Anfragen pro Monat, oder Sie
-            erhalten eine Rückzahlung. Das System bleibt Ihrem Eigentum in jedem
-            Fall.
-          </p>
+          <div className="text-center mb-6">
+            <p className="text-text-muted text-sm uppercase tracking-wide font-semibold mb-1">Ihr Investment</p>
+            <p className="text-primary font-bold text-4xl md:text-5xl">3.500 Euro</p>
+            <p className="text-text-mid text-sm mt-1">einmalig &mdash; 50&thinsp;% bei Start, 50&thinsp;% bei Übergabe</p>
+          </div>
+          <div className="border-t border-primary/20 pt-6">
+            <h3 className="text-primary font-bold text-xl mb-3 text-center">
+              60-Tage Erfolgsgarantie
+            </h3>
+            <p className="text-text-mid leading-relaxed text-center">
+              Das System generiert 3+ qualifizierte Anfragen pro Monat, oder Sie
+              erhalten <span className="font-semibold text-primary">1.000 Euro zurück</span>. Das System bleibt Ihrem Eigentum in jedem Fall.
+            </p>
+          </div>
         </motion.div>
 
         {/* ROI calculator */}
