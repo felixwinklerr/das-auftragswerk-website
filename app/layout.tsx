@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import { MetaPixel } from "@/components/MetaPixel";
 import "./globals.css";
 
 const inter = Inter({
@@ -40,6 +41,7 @@ export default function RootLayout({
     <html lang="de">
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
+        <MetaPixel />
         <Script
           src="https://link.msgsndr.com/js/external-tracking.js"
           data-tracking-id="tk_975727879f944365b4eb9a4e11ff409e"
