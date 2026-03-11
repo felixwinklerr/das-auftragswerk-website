@@ -21,13 +21,26 @@ export default function Proof() {
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeIn}
           custom={0}
-          className="mb-12 text-center text-3xl font-bold text-primary md:text-4xl"
+          className="mb-4 text-center text-3xl font-bold text-primary md:text-4xl"
         >
           Was das System in der Praxis bewirkt.
         </motion.h2>
 
+        {/* Mechanism bridge — before proof cards */}
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+          custom={0.5}
+          className="mb-10 text-center text-text-muted max-w-2xl mx-auto"
+        >
+          Die Mechanik ist branchenunabh&auml;ngig: schnell auffangen, sofort antworten, automatisch nachfassen.
+          Ob Handwerksbetrieb, Zahnarztpraxis oder Coach&nbsp;&mdash; das Ergebnis ist dasselbe.
+        </motion.p>
+
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {/* Eden Beauty Lounge */}
+          {/* Eden Beauty Lounge — repositioned as mechanism proof */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -36,17 +49,30 @@ export default function Proof() {
             custom={1}
             className="rounded-2xl bg-white p-8 shadow-md"
           >
-            <h3 className="mb-4 text-xl font-bold text-text-dark">
-              Eden Beauty Lounge
-            </h3>
-            <blockquote className="mb-4 border-l-4 border-accent pl-4 text-lg text-text-mid italic leading-relaxed">
-              &ldquo;80&ndash;90&thinsp;% weniger manuelle Arbeit.
-              50&thinsp;% mehr Terminbuchungen.
-              77&thinsp;% Lead-zu-Termin-Quote.&rdquo;
-            </blockquote>
-            <p className="text-text-muted">
-              Das gleiche Follow-up-System, auf Ihr Business
-              &uuml;bertragen.
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-bg-orange flex items-center justify-center text-lg" aria-hidden="true">✂️</div>
+              <div>
+                <h3 className="text-lg font-bold text-text-dark">Lokaler Dienstleister</h3>
+                <p className="text-text-muted text-sm">Eden Beauty Lounge</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-3 mb-4">
+              <div className="bg-bg-blue rounded-xl p-3 text-center">
+                <p className="text-primary font-bold text-xl">80&ndash;90&thinsp;%</p>
+                <p className="text-text-muted text-xs leading-snug mt-1">weniger manuelle Arbeit</p>
+              </div>
+              <div className="bg-bg-blue rounded-xl p-3 text-center">
+                <p className="text-primary font-bold text-xl">+50&thinsp;%</p>
+                <p className="text-text-muted text-xs leading-snug mt-1">mehr Terminbuchungen</p>
+              </div>
+              <div className="bg-bg-blue rounded-xl p-3 text-center">
+                <p className="text-primary font-bold text-xl">77&thinsp;%</p>
+                <p className="text-text-muted text-xs leading-snug mt-1">Lead-zu-Termin-Quote</p>
+              </div>
+            </div>
+            <p className="text-text-muted text-sm">
+              Dasselbe Follow-up-System funktioniert f&uuml;r jeden Betrieb,
+              bei dem Anfragen bisher verloren gehen oder zu sp&auml;t beantwortet werden.
             </p>
           </motion.div>
 
@@ -59,33 +85,20 @@ export default function Proof() {
             custom={2}
             className="rounded-2xl bg-white p-8 shadow-md"
           >
-            <h3 className="mb-4 text-xl font-bold text-text-dark">
-              Inés Constantin, Career Coach
-            </h3>
-            <blockquote className="mb-4 border-l-4 border-accent pl-4 text-text-mid italic leading-relaxed">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-bg-orange flex items-center justify-center text-lg" aria-hidden="true">🎯</div>
+              <div>
+                <h3 className="text-lg font-bold text-text-dark">Coach / Berater</h3>
+                <p className="text-text-muted text-sm">In&eacute;s Constantin</p>
+              </div>
+            </div>
+            <blockquote className="border-l-4 border-accent pl-4 text-text-mid italic leading-relaxed">
               &ldquo;Klienten fragen jetzt von sich aus an, statt umgekehrt.
               Das System &uuml;bernimmt, was ich fr&uuml;her stundenlang
               manuell gemacht habe.&rdquo;
             </blockquote>
           </motion.div>
         </div>
-
-        {/* Bridge text: connects proof to Handwerker ICP */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeIn}
-          custom={3}
-          className="mt-8 rounded-2xl bg-white border border-gray-100 shadow-sm p-6 text-center"
-        >
-          <p className="text-text-muted text-sm mb-1 font-semibold uppercase tracking-wide">Die Mechanik dahinter</p>
-          <p className="text-text-dark font-medium leading-relaxed">
-            Ob Handwerksbetrieb, Zahnarztpraxis oder Coach: das System ist dasselbe.
-            Automatisch auffangen, sofort antworten, nachfassen bis der Termin steht.
-            Branche ändert sich. Mechanik nicht.
-          </p>
-        </motion.div>
 
         {/* Proof Bar */}
         <motion.div
@@ -94,7 +107,7 @@ export default function Proof() {
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeIn}
           custom={4}
-          className="mt-4 rounded-xl bg-primary py-4 px-6 text-center font-semibold text-white"
+          className="mt-8 rounded-xl bg-primary py-4 px-6 text-center font-semibold text-white"
         >
           Belegt durch 14-t&auml;gige Umsetzung + 60-Tage Erfolgsgarantie
         </motion.div>
