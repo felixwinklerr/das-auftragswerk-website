@@ -27,84 +27,165 @@ export default function Datenschutz() {
               1. Verantwortlicher
             </h2>
             <p>
-              Felix Winkler
+              G.T. Marketing Management &amp; Consulting UG (haftungsbeschränkt)
               <br />
-              [Adresse folgt]
+              Friedlandstr. 19
               <br />
-              [PLZ Ort]
+              96106 Ebern, Bayern
               <br />
               Deutschland
               <br />
               E-Mail:{" "}
               <a
-                href="mailto:kontakt@dasauftragswerk.de"
+                href="mailto:info@dasauftragswerk.de"
                 className="text-primary hover:underline"
               >
-                kontakt@dasauftragswerk.de
+                info@dasauftragswerk.de
               </a>
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-text-dark">
-              2. Datenerhebung über das Kontaktformular
-            </h2>
-            <p>
-              Wenn Sie unser Kontaktformular nutzen, erheben wir folgende Daten:
-            </p>
-            <ul className="list-disc pl-6">
-              <li>Name</li>
-              <li>Telefonnummer</li>
-              <li>Branche</li>
-              <li>Nachricht (optional)</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-text-dark">
-              3. Zweck der Datenverarbeitung
-            </h2>
-            <p>
-              Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage und
-              zur Kontaktaufnahme bezüglich eines möglichen Erstgesprächs
-              verwendet.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-text-dark">
-              4. Rechtsgrundlage
-            </h2>
-            <p>
-              Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b
-              DSGVO (vorvertragliche Maßnahmen) sowie Art. 6 Abs. 1 lit. f DSGVO
-              (berechtigtes Interesse an der Beantwortung von Anfragen).
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-text-dark">
-              5. Speicherdauer
-            </h2>
-            <p>
-              Ihre Daten werden gespeichert, bis Ihre Anfrage vollständig
-              bearbeitet ist, maximal jedoch 6 Monate. Danach werden sie
-              gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten
-              bestehen.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-text-dark">
-              6. Hosting
+              2. Hosting (Vercel)
             </h2>
             <p>
               Diese Website wird bei Vercel Inc., 340 S Lemon Ave #4133, Walnut,
-              CA 91789, USA gehostet. Vercel kann beim Aufruf der Website
-              technische Daten wie Ihre IP-Adresse erheben. Vercel hat
-              Standardvertragsklauseln (SCCs) gemäß Art. 46 Abs. 2 lit. c DSGVO
-              abgeschlossen, die ein angemessenes Datenschutzniveau
-              gewährleisten.
+              CA 91789, USA gehostet. Beim Aufruf der Website werden technische
+              Zugriffsdaten (u.a. IP-Adresse, Browsertyp, aufgerufene Seiten)
+              verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO
+              (berechtigtes Interesse am sicheren Betrieb der Website). Vercel
+              hat Standardvertragsklauseln (SCCs) gemäß Art. 46 Abs. 2 lit. c
+              DSGVO abgeschlossen.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-text-dark">
+              3. Terminbuchung (GoHighLevel / LeadConnector)
+            </h2>
+            <p>
+              Für die Terminbuchung nutzen wir den Dienst GoHighLevel
+              (LeadConnector) von HighLevel, Inc., 400 N. Saint Paul St., Suite
+              920, Dallas, TX 75201, USA. Das Buchungsformular wird als
+              eingebettetes Element (iframe) von{" "}
+              <code>api.leadconnectorhq.com</code> geladen.
+            </p>
+            <p className="mt-3">
+              Dabei werden folgende Daten direkt an GoHighLevel übermittelt und
+              dort verarbeitet:
+            </p>
+            <ul className="list-disc pl-6">
+              <li>Name</li>
+              <li>E-Mail-Adresse</li>
+              <li>Telefonnummer</li>
+              <li>Wunschtermin und Verfügbarkeit</li>
+              <li>Technische Daten (IP-Adresse, Browser)</li>
+            </ul>
+            <p className="mt-3">
+              Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines
+              Vertrags auf Ihren Wunsch hin). Die Daten werden auf Servern in
+              den USA gespeichert. GoHighLevel ist zertifiziert unter dem
+              EU-US Data Privacy Framework und hat Standardvertragsklauseln
+              (SCCs) sowie einen Data Processing Agreement (DPA) abgeschlossen,
+              die ein angemessenes Schutzniveau gemäß Art. 46 Abs. 2 lit. c
+              DSGVO gewährleisten.
+            </p>
+            <p className="mt-3">
+              Die Datenschutzerklärung von GoHighLevel ist abrufbar unter:{" "}
+              <a
+                href="https://www.gohighlevel.com/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                gohighlevel.com/privacy-policy
+              </a>
+              .
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-text-dark">
+              4. Meta Pixel und Conversions API (Meta / Facebook)
+            </h2>
+            <p>
+              Diese Website verwendet den Meta Pixel sowie die Meta Conversions
+              API (CAPI) von Meta Platforms Ireland Limited, 4 Grand Canal
+              Square, Grand Canal Harbour, Dublin 2, Irland.
+            </p>
+            <p className="mt-3">
+              Dabei werden folgende Daten verarbeitet:
+            </p>
+            <ul className="list-disc pl-6">
+              <li>
+                Cookies (<code>_fbp</code>, <code>_fbc</code>), die im Browser
+                gesetzt werden
+              </li>
+              <li>IP-Adresse und User-Agent (serverseitig via CAPI)</li>
+              <li>Aufgerufene Seiten (PageView-Events)</li>
+              <li>
+                Buchungsabschlüsse (Lead-Event bei erfolgreich abgeschlossenem
+                Termin)
+              </li>
+            </ul>
+            <p className="mt-3">
+              Zweck: Conversion-Tracking und Optimierung von Werbeanzeigen.
+              Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+              Interesse an der Wirkungsmessung unserer Marketingmaßnahmen).
+            </p>
+            <p className="mt-3">
+              Die Daten können in die USA übertragen werden. Meta Platforms
+              Ireland ist unter dem EU-US Data Privacy Framework zertifiziert.
+            </p>
+            <p className="mt-3">
+              Sie können der Datenverarbeitung widersprechen unter:{" "}
+              <a
+                href="https://www.facebook.com/settings?tab=ads"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                facebook.com/settings?tab=ads
+              </a>
+              .
+            </p>
+            <p className="mt-3">
+              Datenschutzerklärung von Meta:{" "}
+              <a
+                href="https://www.facebook.com/privacy/policy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                facebook.com/privacy/policy
+              </a>
+              .
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-text-dark">
+              5. Zweck und Rechtsgrundlagen der Datenverarbeitung
+            </h2>
+            <p>
+              Ihre im Rahmen der Terminbuchung erhobenen Daten werden
+              ausschließlich zur Bearbeitung Ihrer Anfrage und zur
+              Kontaktaufnahme bezüglich eines Erstgesprächs verwendet.
+              Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche
+              Maßnahmen).
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-text-dark">
+              6. Speicherdauer
+            </h2>
+            <p>
+              Ihre Anfragedaten werden gespeichert, bis Ihre Anfrage vollständig
+              bearbeitet ist, maximal jedoch 6 Monate nach Abschluss des
+              Vorgangs. Danach werden sie gelöscht, sofern keine gesetzlichen
+              Aufbewahrungspflichten entgegenstehen.
             </p>
           </section>
 
@@ -113,9 +194,10 @@ export default function Datenschutz() {
               7. Schriftarten
             </h2>
             <p>
-              Diese Website verwendet die Schriftart &quot;Inter&quot;, die lokal
-              auf dem Server gehostet wird (Self-Hosting via next/font). Es
-              werden keine Daten an Google oder andere Drittanbieter übertragen.
+              Diese Website verwendet die Schriftart &quot;Inter&quot;, die
+              lokal auf dem Server gehostet wird (Self-Hosting via next/font).
+              Es werden keine Schriftdaten an Google Fonts oder andere
+              Drittanbieter übertragen.
             </p>
           </section>
 
@@ -146,13 +228,13 @@ export default function Datenschutz() {
                 DSGVO)
               </li>
             </ul>
-            <p>
+            <p className="mt-3">
               Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:{" "}
               <a
-                href="mailto:kontakt@dasauftragswerk.de"
+                href="mailto:info@dasauftragswerk.de"
                 className="text-primary hover:underline"
               >
-                kontakt@dasauftragswerk.de
+                info@dasauftragswerk.de
               </a>
             </p>
           </section>
@@ -164,16 +246,8 @@ export default function Datenschutz() {
             <p>
               Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde
               über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-text-dark">
-              10. Cookies
-            </h2>
-            <p>
-              Diese Website verwendet keine Cookies und keine
-              Tracking-Technologien.
+              Zuständig für Bayern ist das Bayerische Landesamt für
+              Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach.
             </p>
           </section>
         </div>
