@@ -10,7 +10,7 @@ interface ComparisonRow {
 
 const rows: ComparisonRow[] = [
   {
-    agentur: "€1.000–1.500/Monat",
+    agentur: "1.000 bis 1.500 Euro pro Monat",
     auftragswerk: "Einmalig. Nicht monatlich.",
     diy: "3–6 Monate, halbfertig",
   },
@@ -81,11 +81,11 @@ export default function Pricing() {
 
           {/* Das Auftragswerk column — highlighted */}
           <motion.div
-            className="rounded-2xl border-2 border-accent bg-white p-6 shadow-lg -mt-2 -mb-2 flex flex-col"
+            className="rounded-2xl border-2 border-green-400 bg-green-50 p-6 shadow-lg -mt-2 -mb-2 flex flex-col"
             custom={0.1}
             variants={fadeUp}
           >
-            <h3 className="bg-primary text-white font-bold text-lg text-center rounded-lg py-2 mb-6">
+            <h3 className="bg-green-600 text-white font-bold text-lg text-center rounded-lg py-2 mb-6">
               Das Auftragswerk
             </h3>
             <div className="flex flex-col gap-4 flex-1">
@@ -129,7 +129,7 @@ export default function Pricing() {
             >
               <div className="grid grid-cols-3 text-xs font-semibold">
                 <span className="bg-red-50 text-red-400 py-2 px-3 text-center">Agentur</span>
-                <span className="bg-primary text-white py-2 px-3 text-center">Auftragswerk</span>
+                <span className="bg-green-600 text-white py-2 px-3 text-center">Auftragswerk</span>
                 <span className="bg-orange-50 text-orange-500 py-2 px-3 text-center">DIY</span>
               </div>
               <div className="grid grid-cols-3 text-xs">
@@ -183,9 +183,9 @@ export default function Pricing() {
                 Handwerker-Szenario
               </p>
               <p className="text-text-mid text-sm leading-relaxed">
-                2 neue Aufträge/Monat x €800 = <span className="font-semibold text-primary">€1.600/Monat zusätzlich.</span>
+                2 neue Aufträge pro Monat x 800 Euro = <span className="font-semibold text-primary">1.600 Euro pro Monat zusätzlich.</span>
               </p>
-              <p className="text-accent font-semibold mt-2 text-sm">
+              <p className="text-accent font-bold mt-3 text-base md:text-lg">
                 Dauerhaft. Ohne Ihr Zutun.
               </p>
             </motion.div>
@@ -200,7 +200,7 @@ export default function Pricing() {
               <p className="text-text-mid text-sm leading-relaxed">
                 1 neuer Privatpatient = 2.500 Euro Wert. System bezahlt sich mit dem ersten Patienten.
               </p>
-              <p className="text-accent font-semibold mt-2 text-sm">
+              <p className="text-accent font-bold mt-3 text-base md:text-lg">
                 Dauerhaft. Ohne Ihr Zutun.
               </p>
             </motion.div>

@@ -37,7 +37,7 @@ export default function Deliverables() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
         >
-          Was Sie in 14&nbsp;Tagen bekommen.
+          Alles. Fertig übergeben.
         </motion.h2>
 
         {/* Desktop table */}

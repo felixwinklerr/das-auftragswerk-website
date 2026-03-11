@@ -21,18 +21,11 @@ const clientTouches: ClientTouch[] = [
 ];
 
 const steps: Step[] = [
-  { day: "Tag 0", description: "Onboarding + Kick-off Fragebogen" },
-  { day: "Tag 1–2", description: "Kick-off Call + Keyword-Recherche" },
-  {
-    day: "Tag 3–10",
-    description: "Build-Phase (LP, GBP, CRM, Automationen, Ads)",
-  },
-  { day: "Tag 11–12", description: "QA + Abstimmung" },
-  { day: "Tag 13", description: "Soft Launch" },
-  {
-    day: "Tag 14",
-    description: "Übergabe + Video-Einweisung",
-  },
+  { day: "Tag 0", description: "Start: Fragebogen + Zugänge" },
+  { day: "Tag 1–2", description: "Kick-off Call (30 Min)" },
+  { day: "Tag 3–13", description: "Wir bauen. Sie machen weiter." },
+  { day: "Tag 11–12", description: "Ihre Feedback-Runde (20 Min)" },
+  { day: "Tag 14", description: "Übergabe. System ist live." },
 ];
 
 const dotVariants = {
@@ -64,7 +57,7 @@ export default function Timeline() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
         >
-          14&nbsp;Tage. Kein&nbsp;Chaos. Nur&nbsp;2&nbsp;Stunden Ihrer&nbsp;Zeit.
+          14&nbsp;Tage. 2&nbsp;Stunden&nbsp;Ihrer&nbsp;Zeit. Den&nbsp;Rest übernehmen&nbsp;wir.
         </motion.h2>
 
         {/* Desktop: horizontal timeline */}
