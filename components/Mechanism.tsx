@@ -14,20 +14,20 @@ const layers: Layer[] = [
     number: 1,
     name: "Sichtbarkeit",
     details:
-      "Google Business Profil + Conversion Landing Page + On-Page SEO + Schema Markup + Google Ads Setup",
+      "Google Business, Landing Page, SEO, Google Ads",
     quote: "Kunden finden Sie, wenn sie aktiv suchen.",
   },
   {
     number: 2,
     name: "Lead-Capture",
     details: "Formular + Click-to-Call + WhatsApp Business Link",
-    quote: "Wer klickt, wird aufgefangen\u00A0\u2014 auf jedem Ger\u00E4t.",
+    quote: "Wer klickt, wird aufgefangen: auf jedem Ger\u00E4t.",
   },
   {
     number: 3,
     name: "Automatisches Follow-up",
     details:
-      "Sofort-Antwort in 60\u202FSek. + 5-Step Sequenz \u00FCber 7\u00A0Tage",
+      "Sofort-Antwort in 60 Sek. + 5 Nachrichten über 7 Tage",
     quote:
       "Keine verlorenen Anfragen mehr, auch wenn Sie gerade auf der Baustelle sind.",
   },
@@ -41,7 +41,7 @@ const layers: Layer[] = [
     number: 5,
     name: "Tracking",
     details: "Lead-Dashboard: Quellen, Volumen, Conversion",
-    quote: "Sie sehen was funktioniert\u00A0\u2014 und steuern selbst.",
+    quote: "Sie sehen was funktioniert, und steuern selbst.",
   },
 ];
 

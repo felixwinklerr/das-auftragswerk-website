@@ -17,7 +17,7 @@ const faqs: FAQItem[] = [
   {
     question: "Was ist mit den laufenden Google Ads Kosten?",
     answer:
-      "Das Ads-Budget zahlen Sie direkt an Google — keine Aufschläge. Empfohlen: €300–600/Monat. Die Kampagne richten wir einmalig ein.",
+      "Das Ads-Budget zahlen Sie direkt an Google, keine Aufschläge von unserer Seite. Mindestens 300 Euro pro Monat empfohlen. Die Kampagne richten wir einmalig ein.",
   },
   {
     question: "Ich hatte schlechte Erfahrungen mit Agenturen.",
@@ -32,7 +32,12 @@ const faqs: FAQItem[] = [
   {
     question: "Für welche Branchen funktioniert das?",
     answer:
-      "Primär: Handwerk + lokale Services (Elektriker, Maler, Reinigung, Sanitär). Sekundär: Praxen (Zahnärzte, Physio, Therapeuten). Tertiär: Coaches + Berater. Voraussetzung: Ihre Kunden googeln aktiv nach Ihnen.",
+      "Am besten geeignet: Handwerk und lokale Services (Elektriker, Maler, Reinigung, Sanitär, Beauty-Praxen). Sehr gut geeignet: Praxen (Zahnärzte, Physio, Therapeuten). Gut geeignet: Coaches und Berater. Grundvoraussetzung: Ihre Kunden suchen aktiv über Google nach Ihnen.",
+  },
+  {
+    question: "Gibt es versteckte Kosten oder Fallstricke?",
+    answer:
+      "Keine. Einmalig 3.500 Euro, 50 Prozent bei Start, 50 Prozent bei Übergabe. Keine Folgekosten an uns. Google Ads Budget zahlen Sie direkt an Google. CRM-Software optional nach Übergabe. Alle Konditionen schriftlich festgehalten.",
   },
   {
     question: "Gehört mir das System wirklich?",

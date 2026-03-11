@@ -63,11 +63,11 @@ export default function Pricing() {
         >
           {/* Agentur column */}
           <motion.div
-            className="rounded-2xl border border-gray-200 bg-bg-gray p-6"
+            className="rounded-2xl border border-red-200 bg-red-50 p-6"
             custom={0}
             variants={fadeUp}
           >
-            <h3 className="text-text-muted font-semibold text-lg text-center mb-6">
+            <h3 className="text-red-400 font-semibold text-lg text-center mb-6">
               Agentur
             </h3>
             <div className="flex flex-col gap-4">
@@ -99,11 +99,11 @@ export default function Pricing() {
 
           {/* DIY column */}
           <motion.div
-            className="rounded-2xl border border-gray-200 bg-bg-gray p-6"
+            className="rounded-2xl border border-orange-200 bg-orange-50 p-6"
             custom={0.2}
             variants={fadeUp}
           >
-            <h3 className="text-text-muted font-semibold text-lg text-center mb-6">
+            <h3 className="text-orange-500 font-semibold text-lg text-center mb-6">
               DIY
             </h3>
             <div className="flex flex-col gap-4">
@@ -128,9 +128,9 @@ export default function Pricing() {
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
               <div className="grid grid-cols-3 text-xs font-semibold">
-                <span className="bg-bg-gray text-text-muted py-2 px-3 text-center">Agentur</span>
+                <span className="bg-red-50 text-red-400 py-2 px-3 text-center">Agentur</span>
                 <span className="bg-primary text-white py-2 px-3 text-center">Auftragswerk</span>
-                <span className="bg-bg-gray text-text-muted py-2 px-3 text-center">DIY</span>
+                <span className="bg-orange-50 text-orange-500 py-2 px-3 text-center">DIY</span>
               </div>
               <div className="grid grid-cols-3 text-xs">
                 <span className="py-3 px-3 text-center text-text-mid">{row.agentur}</span>
@@ -168,9 +168,11 @@ export default function Pricing() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h3 className="text-primary font-bold text-xl text-center mb-6">
-            Was das konkret bedeutet:
-          </h3>
+          <div className="text-center mb-8">
+            <span className="inline-block bg-primary text-white font-bold text-lg px-8 py-3 rounded-full shadow-md">
+              Was das konkret bedeutet
+            </span>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             <motion.div
               className="bg-bg-gray rounded-xl p-6"
@@ -196,10 +198,10 @@ export default function Pricing() {
                 Zahnarzt-Szenario
               </p>
               <p className="text-text-mid text-sm leading-relaxed">
-                1 Privatpatient/Monat x €2.500 LTV.
+                1 neuer Privatpatient = 2.500 Euro Wert. System bezahlt sich mit dem ersten Patienten.
               </p>
               <p className="text-accent font-semibold mt-2 text-sm">
-                Bereits ab Woche 1 im Plus.
+                Dauerhaft. Ohne Ihr Zutun.
               </p>
             </motion.div>
           </div>

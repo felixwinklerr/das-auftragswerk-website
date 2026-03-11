@@ -7,6 +7,19 @@ interface Step {
   description: string;
 }
 
+interface ClientTouch {
+  tag: string;
+  aktion: string;
+  duration: string;
+}
+
+const clientTouches: ClientTouch[] = [
+  { tag: "Tag 0–1", aktion: "Onboarding Call", duration: "30 Min" },
+  { tag: "Tag 2", aktion: "Zugänge übergeben", duration: "15 Min" },
+  { tag: "Tag 11–12", aktion: "Feedback Landing Page", duration: "20 Min" },
+  { tag: "Tag 14", aktion: "Übergabe-Call", duration: "30 Min" },
+];
+
 const steps: Step[] = [
   { day: "Tag 0", description: "Onboarding + Kick-off Fragebogen" },
   { day: "Tag 1–2", description: "Kick-off Call + Keyword-Recherche" },
@@ -133,12 +146,17 @@ export default function Timeline() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <p className="text-text-dark font-semibold mb-2">Was Sie beitragen:</p>
-          <p className="text-text-mid leading-relaxed">
-            Onboarding-Fragebogen (30&nbsp;Min) + Kick-off Call (30&nbsp;Min) +
-            1&nbsp;Feedback-Runde (20&nbsp;Min) + Übergabe (30&nbsp;Min).
-          </p>
-          <p className="text-primary font-bold mt-3 text-lg">
+          <p className="text-text-dark font-semibold mb-4">Ihre 4 Kontaktpunkte in 14 Tagen:</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+            {clientTouches.map((item) => (
+              <div key={item.tag} className="bg-bg-blue rounded-xl p-3 text-center">
+                <p className="text-primary font-bold text-xs mb-1">{item.tag}</p>
+                <p className="text-text-mid text-xs leading-snug">{item.aktion}</p>
+                <p className="text-text-muted text-xs">{item.duration}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-primary font-bold text-lg">
             Insgesamt: ca.&nbsp;2&nbsp;Stunden.
           </p>
         </motion.div>
