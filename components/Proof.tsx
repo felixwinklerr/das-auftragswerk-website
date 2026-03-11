@@ -111,6 +111,23 @@ export default function Proof() {
         >
           Belegt durch 14-t&auml;gige Umsetzung + 60-Tage Erfolgsgarantie
         </motion.div>
+
+        {/* Mid-page CTA */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+          custom={5}
+          className="mt-10 text-center"
+        >
+          <a
+            href="#kontakt"
+            className="inline-block rounded-full bg-accent px-10 py-4 text-base font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-200 hover:shadow-xl hover:shadow-accent/30 hover:brightness-105"
+          >
+            Kostenloses Erstgespräch buchen
+          </a>
+        </motion.div>
       </div>
     </section>
   );

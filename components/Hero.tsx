@@ -181,6 +181,10 @@ export default function Hero() {
               Wie es funktioniert&nbsp;&darr;
             </a>
           </div>
+
+          <p className="mt-4 text-sm text-text-muted">
+            60-Tage Erfolgsgarantie. Kein technisches Know-how nötig.
+          </p>
         </motion.div>
 
         {/* Visual column */}
