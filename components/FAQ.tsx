@@ -32,7 +32,7 @@ const faqs: FAQItem[] = [
   {
     question: "Für welche Branchen funktioniert das?",
     answer:
-      "Am besten geeignet: Handwerk und lokale Services (Elektriker, Maler, Reinigung, Sanitär, Beauty-Praxen). Sehr gut geeignet: Praxen (Zahnärzte, Physio, Therapeuten). Gut geeignet: Coaches und Berater. Grundvoraussetzung: Ihre Kunden suchen aktiv über Google nach Ihnen.",
+      "Handwerk und lokale Services (Elektriker, Maler, Reinigung, Sanitär, Beauty-Praxen), Praxen (Zahnärzte, Physio, Therapeuten), Coaches und Berater. Eine Voraussetzung: Ihre Kunden suchen aktiv über Google nach Ihnen.",
   },
   {
     question: "Gibt es versteckte Kosten oder Fallstricke?",
@@ -42,7 +42,7 @@ const faqs: FAQItem[] = [
   {
     question: "Gehört mir das System wirklich?",
     answer:
-      "Vollständig. Landing Page unter Ihrer Domain, Google Ads in Ihrem Account, GBP Ihr Account. CRM läuft auf unserem Sub-Account — Exit-Garantie: vollständiger Daten-Export innerhalb 7 Tage auf Anfrage.",
+      "Vollständig. Landing Page unter Ihrer Domain, Google Ads in Ihrem Account, GBP Ihr Account. CRM läuft auf unserem Sub-Account. Exit-Garantie: vollständiger Daten-Export innerhalb 7 Tage auf Anfrage.",
   },
 ];
 

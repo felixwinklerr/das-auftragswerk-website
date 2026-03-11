@@ -36,7 +36,7 @@ export default function Proof() {
           className="mb-10 text-center text-text-muted max-w-2xl mx-auto"
         >
           Die Mechanik ist branchenunabh&auml;ngig: schnell auffangen, sofort antworten, automatisch nachfassen.
-          Ob Handwerksbetrieb, Zahnarztpraxis oder Coach&nbsp;&mdash; das Ergebnis ist dasselbe.
+          Ob Handwerksbetrieb, Zahnarztpraxis oder Coach: das Ergebnis ist dasselbe.
         </motion.p>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">

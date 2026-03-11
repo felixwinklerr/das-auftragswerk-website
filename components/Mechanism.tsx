@@ -13,35 +13,32 @@ const layers: Layer[] = [
   {
     number: 1,
     name: "Sichtbarkeit",
-    details:
-      "Google Business, Landing Page, SEO, Google Ads",
+    details: "Google Business, Landing Page, SEO, Google Ads",
     quote: "Kunden finden Sie, wenn sie aktiv suchen.",
   },
   {
     number: 2,
     name: "Anfragen auffangen",
     details: "Formular + Click-to-Call + WhatsApp Business Link",
-    quote: "Wer klickt, landet direkt bei Ihnen: auf jedem Ger\u00E4t.",
+    quote: "Wer klickt, landet direkt bei Ihnen.",
   },
   {
     number: 3,
     name: "Automatisches Follow-up",
-    details:
-      "Sofort-Antwort in 60 Sek. + 5 Nachrichten über 7 Tage",
-    quote:
-      "Keine verlorenen Anfragen mehr, auch wenn Sie gerade auf der Baustelle sind.",
+    details: "Sofort-Antwort in 60 Sek. + 5 Nachrichten \u00FCber 7 Tage",
+    quote: "Keine verlorene Anfrage mehr.",
   },
   {
     number: 4,
     name: "Beweis & Vertrauen",
     details: "Automatisierter Google Review Request nach Abschluss",
-    quote: "Ihr Rating w\u00E4chst, Ihre Sichtbarkeit w\u00E4chst mit.",
+    quote: "Mehr Bewertungen. Mehr Sichtbarkeit.",
   },
   {
     number: 5,
-    name: "Überblick behalten",
+    name: "\u00DCberblick behalten",
     details: "Dashboard: Woher kommen Anfragen, wie viele, was wird draus",
-    quote: "Sie sehen was funktioniert, und steuern selbst.",
+    quote: "Sie sehen, was funktioniert.",
   },
 ];
 
