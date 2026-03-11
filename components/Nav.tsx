@@ -7,7 +7,7 @@ const navLinks = [
   { label: "Das System", href: "#das-system" },
   { label: "So funktioniert es", href: "#so-funktioniert-es" },
   { label: "Ergebnisse", href: "#ergebnisse" },
-  { label: "Preis", href: "#preis" },
+  { label: "Vergleich", href: "#preis" },
 ];
 
 export default function Nav() {
