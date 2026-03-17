@@ -22,7 +22,7 @@ const faqs: FAQItem[] = [
   {
     question: "Ich hatte schlechte Erfahrungen mit Agenturen.",
     answer:
-      "Das hören wir oft. Deshalb: System gehört Ihnen, vollständige Exit-Garantie, 60-Tage Erfolgsgarantie. Das Risiko liegt bei uns.",
+      "Das hören wir oft. Deshalb: System gehört Ihnen, vollständige Exit-Garantie, doppelte Garantie. Das Risiko liegt bei uns.",
   },
   {
     question: "Was passiert nach 14 Tagen?",

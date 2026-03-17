@@ -36,7 +36,7 @@ export default function Proof() {
           className="mb-10 text-center text-text-muted max-w-2xl mx-auto"
         >
           Die Mechanik ist branchenunabh&auml;ngig: schnell auffangen, sofort antworten, automatisch nachfassen.
-          Ob Handwerksbetrieb, Zahnarztpraxis oder Coach: das Ergebnis ist dasselbe.
+          Ob Handwerksbetrieb, Coach oder Berater: das Ergebnis ist dasselbe.
         </motion.p>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -109,7 +109,7 @@ export default function Proof() {
           custom={4}
           className="mt-8 rounded-xl bg-primary py-4 px-6 text-center font-semibold text-white"
         >
-          Belegt durch 14-t&auml;gige Umsetzung + 60-Tage Erfolgsgarantie
+          Belegt durch 14-t&auml;gige Umsetzung + doppelte Garantie
         </motion.div>
 
         {/* Mid-page CTA */}

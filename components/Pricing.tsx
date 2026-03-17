@@ -156,21 +156,20 @@ export default function Pricing() {
           </h3>
           <div className="flex flex-col gap-4">
             <div className="flex items-start gap-3">
-              <span className="text-green-500 font-bold text-lg shrink-0">1.</span>
+              <span className="text-green-500 font-bold text-lg shrink-0">✓</span>
               <div>
                 <p className="text-text-dark font-semibold">Delivery-Garantie</p>
-                <p className="text-text-mid text-sm leading-relaxed">Die zweite Rate zahlen Sie erst bei vollständiger System-Übergabe. Kein fertiges System, keine zweite Zahlung.</p>
+                <p className="text-text-mid text-sm leading-relaxed">Kein fertiges System, keine Zahlung. Sie zahlen nur, was geliefert wurde.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-green-500 font-bold text-lg shrink-0">2.</span>
+              <span className="text-green-500 font-bold text-lg shrink-0">✓</span>
               <div>
                 <p className="text-text-dark font-semibold">Ergebnis-Garantie</p>
-                <p className="text-text-mid text-sm leading-relaxed">Weniger als 10 qualifizierte Anfragen in 90 Tagen? Sie erhalten einen kostenlosen Optimierungs-Sprint (2-4h). <span className="font-semibold text-primary">Das System bleibt Ihnen in jedem Fall.</span></p>
+                <p className="text-text-mid text-sm leading-relaxed">Kommen nicht genug qualifizierte Anfragen? Wir optimieren kostenlos nach. <span className="font-semibold text-primary">Das System bleibt Ihnen in jedem Fall.</span></p>
               </div>
             </div>
           </div>
-          <p className="text-text-muted text-xs text-center mt-5">Voraussetzungen: Ads-Budget mind. 300 Euro/Monat aktiv, Zugänge innerhalb 48h übergeben.</p>
         </motion.div>
 
         {/* ROI calculator */}

@@ -35,7 +35,7 @@ export default function ContactForm() {
           {[
             "Kein Abo",
             "System gehört Ihnen",
-            "60-Tage Garantie",
+            "Doppelte Garantie",
             "DACH-Markt",
           ].map((item) => (
             <span key={item} className="inline-flex items-center gap-1.5">
