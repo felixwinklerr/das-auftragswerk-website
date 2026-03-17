@@ -15,7 +15,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Das Auftragswerk — Automatische Anfragen-Systeme für deutsche Dienstleister",
   description:
-    "In 14 Tagen ein funktionierendes Anfragen-System: Landing Page, Google Business, Follow-up Automatisierung. €3.500 einmalig. System gehört Ihnen.",
+    "In 14 Tagen ein funktionierendes Anfragen-System: Landing Page, Google Business, Follow-up Automatisierung. Einmalig, kein Abo. System gehört Ihnen.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Das Auftragswerk — Automatische Anfragen-Systeme für deutsche Dienstleister",
     description:
-      "In 14 Tagen ein funktionierendes Anfragen-System: Landing Page, Google Business, Follow-up Automatisierung. €3.500 einmalig. System gehört Ihnen.",
+      "In 14 Tagen ein funktionierendes Anfragen-System: Landing Page, Google Business, Follow-up Automatisierung. Einmalig, kein Abo. System gehört Ihnen.",
     type: "website",
     locale: "de_DE",
   },

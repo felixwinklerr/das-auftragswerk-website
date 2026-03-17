@@ -2,141 +2,191 @@
 
 import { motion } from "framer-motion";
 
+/* ── Animated system-flow graphic ────────────────────────────── */
+
+interface FlowStep {
+  icon: string;
+  label: string;
+  sublabel: string;
+}
+
+const steps: FlowStep[] = [
+  { icon: "🔍", label: "Google-Suche", sublabel: "Kunde sucht aktiv" },
+  { icon: "📄", label: "Landing Page", sublabel: "Klick & Interesse" },
+  { icon: "📩", label: "Anfrage erfasst", sublabel: "Formular / Anruf" },
+  { icon: "⚡", label: "Sofort-Antwort", sublabel: "In 60 Sekunden" },
+  { icon: "📅", label: "Termin gebucht", sublabel: "Automatisch" },
+];
+
+const stepVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.3 + i * 0.18, duration: 0.5, ease: "easeOut" as const },
+  }),
+};
+
 function SystemGraphic() {
   return (
-    <div className="relative mx-auto h-80 w-full max-w-md md:h-[420px] md:max-w-none">
-      {/* Large background shape */}
+    <div className="relative mx-auto w-full max-w-md md:max-w-none">
+      {/* Background glow */}
+      <div className="absolute inset-0 -m-4 rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+
+      {/* Main card */}
       <motion.div
-        className="absolute top-8 left-4 h-52 w-52 rounded-3xl bg-primary/10 md:top-10 md:left-8 md:h-64 md:w-64"
-        animate={{ y: [0, -8, 0] }}
+        className="relative rounded-2xl border border-primary/15 bg-white p-6 shadow-xl md:p-8"
+        animate={{ y: [0, -4, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-      />
+      >
+        {/* Header bar */}
+        <div className="mb-5 flex items-center gap-2">
+          <div className="h-3 w-3 rounded-full bg-red-300" />
+          <div className="h-3 w-3 rounded-full bg-yellow-300" />
+          <div className="h-3 w-3 rounded-full bg-green-400" />
+          <span className="ml-3 text-xs font-medium text-text-muted">
+            Ihr Anfragen-System
+          </span>
+        </div>
 
-      {/* Main card shape */}
+        {/* Flow steps */}
+        <div className="flex flex-col gap-3">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.label}
+              className="flex items-center gap-3"
+              custom={i}
+              variants={stepVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {/* Step badge */}
+              <motion.div
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg shadow-sm ${
+                  i === steps.length - 1
+                    ? "bg-green-50 ring-2 ring-green-400/40"
+                    : "bg-bg-blue"
+                }`}
+                animate={
+                  i === steps.length - 1
+                    ? { scale: [1, 1.08, 1] }
+                    : undefined
+                }
+                transition={
+                  i === steps.length - 1
+                    ? { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                    : undefined
+                }
+              >
+                {step.icon}
+              </motion.div>
+
+              {/* Connector bar */}
+              <div className="relative h-1.5 w-6 overflow-hidden rounded-full bg-primary/10 md:w-8">
+                <motion.div
+                  className="absolute inset-y-0 left-0 w-full rounded-full bg-accent/60"
+                  animate={{ x: ["-100%", "100%"] }}
+                  transition={{
+                    duration: 1.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: i * 0.3,
+                  }}
+                />
+              </div>
+
+              {/* Label */}
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-semibold leading-tight text-text-dark">
+                  {step.label}
+                </p>
+                <p className="text-xs text-text-muted">{step.sublabel}</p>
+              </div>
+
+              {/* Status indicator */}
+              <motion.div
+                className={`h-2 w-2 shrink-0 rounded-full ${
+                  i === steps.length - 1 ? "bg-green-500" : "bg-primary/30"
+                }`}
+                animate={{ opacity: [0.4, 1, 0.4] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.25,
+                }}
+              />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom stats strip */}
+        <motion.div
+          className="mt-5 grid grid-cols-3 gap-2 rounded-xl bg-bg-gray p-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.6 }}
+        >
+          <div className="text-center">
+            <p className="text-base font-bold text-primary md:text-lg">24/7</p>
+            <p className="text-[10px] text-text-muted">Automatisch</p>
+          </div>
+          <div className="text-center">
+            <p className="text-base font-bold text-accent md:text-lg">60s</p>
+            <p className="text-[10px] text-text-muted">Antwortzeit</p>
+          </div>
+          <div className="text-center">
+            <p className="text-base font-bold text-green-600 md:text-lg">
+              ✓
+            </p>
+            <p className="text-[10px] text-text-muted">Ihr Eigentum</p>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Floating notification card */}
       <motion.div
-        className="absolute top-16 left-16 h-44 w-60 rounded-2xl border border-primary/20 bg-white shadow-lg md:top-20 md:left-24 md:h-56 md:w-72"
+        className="absolute -right-2 -bottom-3 rounded-xl border border-green-200 bg-white px-4 py-2.5 shadow-lg md:-right-4 md:-bottom-4"
         animate={{ y: [0, -6, 0] }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.5,
-        }}
-      >
-        {/* Simulated content lines */}
-        <div className="space-y-3 p-5 md:p-6">
-          <div className="h-3 w-3/4 rounded-full bg-primary/15" />
-          <div className="h-3 w-1/2 rounded-full bg-primary/10" />
-          <div className="mt-5 h-8 w-28 rounded-lg bg-accent/20" />
-          <div className="mt-3 h-3 w-2/3 rounded-full bg-bg-blue" />
-          <div className="h-3 w-1/3 rounded-full bg-bg-blue" />
-        </div>
-      </motion.div>
-
-      {/* Accent floating card */}
-      <motion.div
-        className="absolute right-4 bottom-16 h-28 w-36 rounded-2xl bg-accent/10 backdrop-blur-sm md:right-4 md:bottom-20 md:h-36 md:w-44"
-        animate={{ y: [0, 6, 0] }}
-        transition={{
-          duration: 4.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      >
-        <div className="space-y-2 p-4">
-          <div className="h-2.5 w-2/3 rounded-full bg-accent/30" />
-          <div className="h-2.5 w-1/2 rounded-full bg-accent/20" />
-          <div className="mt-3 h-6 w-16 rounded-md bg-accent/25" />
-        </div>
-      </motion.div>
-
-      {/* Small blue floating element */}
-      <motion.div
-        className="absolute top-4 right-12 h-16 w-20 rounded-xl bg-bg-blue shadow-sm md:right-20 md:h-20 md:w-24"
-        animate={{ y: [0, -10, 0] }}
-        transition={{
-          duration: 3.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.3,
-        }}
-      >
-        <div className="flex h-full items-center justify-center">
-          <div className="h-6 w-6 rounded-full bg-primary/20 md:h-8 md:w-8" />
-        </div>
-      </motion.div>
-
-      {/* Animated pulse dots — data flow */}
-      <motion.div
-        className="absolute top-28 left-10 h-3 w-3 rounded-full bg-accent md:top-36 md:left-14"
-        animate={{ scale: [1, 1.6, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-44 right-20 h-2.5 w-2.5 rounded-full bg-primary md:top-56 md:right-28"
-        animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
-        transition={{
-          duration: 2.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.8,
-        }}
-      />
-      <motion.div
-        className="absolute right-8 bottom-36 h-2 w-2 rounded-full bg-accent md:right-12 md:bottom-44"
-        animate={{ scale: [1, 1.8, 1], opacity: [0.6, 1, 0.6] }}
-        transition={{
-          duration: 1.8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1.5,
-        }}
-      />
-      <motion.div
-        className="absolute bottom-24 left-24 h-2 w-2 rounded-full bg-primary/60 md:bottom-28 md:left-32"
-        animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.9, 0.4] }}
         transition={{
           duration: 3,
           repeat: Infinity,
           ease: "easeInOut",
-          delay: 0.5,
+          delay: 2,
         }}
-      />
-
-      {/* Connection line (decorative) */}
-      <svg
-        className="absolute inset-0 h-full w-full"
-        viewBox="0 0 400 400"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
       >
-        <motion.path
-          d="M100 160 C150 140, 200 200, 280 180"
-          stroke="#0B3D6F"
-          strokeWidth="1.5"
-          strokeDasharray="6 4"
-          strokeOpacity="0.2"
-          fill="none"
-          animate={{ strokeDashoffset: [0, -20] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.path
-          d="M160 260 C200 240, 260 280, 320 250"
-          stroke="#FF8C42"
-          strokeWidth="1.5"
-          strokeDasharray="6 4"
-          strokeOpacity="0.2"
-          fill="none"
-          animate={{ strokeDashoffset: [0, -20] }}
-          transition={{
-            duration: 2.5,
-            repeat: Infinity,
-            ease: "linear",
-            delay: 1,
-          }}
-        />
-      </svg>
+        <div className="flex items-center gap-2">
+          <span className="text-green-500 text-sm">●</span>
+          <span className="text-xs font-medium text-text-dark">
+            Neue Anfrage eingegangen
+          </span>
+        </div>
+      </motion.div>
+
+      {/* Floating "auto-reply sent" card */}
+      <motion.div
+        className="absolute -left-2 top-12 rounded-xl border border-blue-200 bg-white px-4 py-2.5 shadow-lg md:-left-4 md:top-16"
+        animate={{ y: [0, 5, 0] }}
+        transition={{
+          duration: 3.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 3,
+        }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+      >
+        <div className="flex items-center gap-2">
+          <span className="text-blue-500 text-sm">⚡</span>
+          <span className="text-xs font-medium text-text-dark">
+            Antwort gesendet
+          </span>
+        </div>
+      </motion.div>
     </div>
   );
 }
@@ -162,8 +212,7 @@ export default function Hero() {
           </p>
 
           <p className="mt-4 text-sm text-text-muted">
-            Für Handwerker, Zahnärzte, Coaches und lokale Dienstleister im
-            DACH-Raum.
+            Für Handwerker, Coaches und lokale Dienstleister im DACH-Raum.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-5">
@@ -183,7 +232,7 @@ export default function Hero() {
           </div>
 
           <p className="mt-4 text-sm text-text-muted">
-            60-Tage Erfolgsgarantie. Kein technisches Know-how nötig.
+            Doppelte Garantie. Kein technisches Know-how nötig.
           </p>
         </motion.div>
 

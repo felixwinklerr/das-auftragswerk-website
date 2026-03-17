@@ -32,12 +32,12 @@ const faqs: FAQItem[] = [
   {
     question: "Für welche Branchen funktioniert das?",
     answer:
-      "Handwerk und lokale Services (Elektriker, Maler, Reinigung, Sanitär, Beauty-Praxen), Praxen (Zahnärzte, Physio, Therapeuten), Coaches und Berater. Eine Voraussetzung: Ihre Kunden suchen aktiv über Google nach Ihnen.",
+      "Handwerk und lokale Services (Elektriker, Maler, Reinigung, Sanitär, Schreiner, Garten), Coaches und Berater. Eine Voraussetzung: Ihre Kunden suchen aktiv über Google nach Ihnen.",
   },
   {
     question: "Gibt es versteckte Kosten oder Fallstricke?",
     answer:
-      "Keine. Einmalig 3.500 Euro, 50 Prozent bei Start, 50 Prozent bei Übergabe. Keine Folgekosten an uns. Google Ads Budget zahlen Sie direkt an Google. CRM-Software optional nach Übergabe. Alle Konditionen schriftlich festgehalten.",
+      "Keine. Einmalige Investition, keine Folgekosten an uns. Google Ads Budget zahlen Sie direkt an Google. CRM-Software optional nach Übergabe. Alle Konditionen schriftlich festgehalten.",
   },
   {
     question: "Gehört mir das System wirklich?",

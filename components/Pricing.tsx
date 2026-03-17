@@ -26,7 +26,7 @@ const rows: ComparisonRow[] = [
   },
   {
     agentur: "Abhängigkeit",
-    auftragswerk: "Exit-Garantie 7 Tage",
+    auftragswerk: "Kein Lock-in. Export jederzeit.",
     diy: "—",
   },
 ];
@@ -151,13 +151,26 @@ export default function Pricing() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.15 }}
         >
-          <h3 className="text-primary font-bold text-2xl mb-3 text-center">
-            60-Tage Erfolgsgarantie
+          <h3 className="text-primary font-bold text-2xl mb-5 text-center">
+            Doppelte Garantie
           </h3>
-          <p className="text-text-mid leading-relaxed text-center">
-            Das System generiert 3+ qualifizierte Anfragen pro Monat, oder Sie
-            erhalten <span className="font-semibold text-primary">1.000 Euro zurück</span>. Das System bleibt Ihrem Eigentum in jedem Fall.
-          </p>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-start gap-3">
+              <span className="text-green-500 font-bold text-lg shrink-0">1.</span>
+              <div>
+                <p className="text-text-dark font-semibold">Delivery-Garantie</p>
+                <p className="text-text-mid text-sm leading-relaxed">Die zweite Rate zahlen Sie erst bei vollständiger System-Übergabe. Kein fertiges System, keine zweite Zahlung.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-green-500 font-bold text-lg shrink-0">2.</span>
+              <div>
+                <p className="text-text-dark font-semibold">Ergebnis-Garantie</p>
+                <p className="text-text-mid text-sm leading-relaxed">Weniger als 10 qualifizierte Anfragen in 90 Tagen? Sie erhalten einen kostenlosen Optimierungs-Sprint (2-4h). <span className="font-semibold text-primary">Das System bleibt Ihnen in jedem Fall.</span></p>
+              </div>
+            </div>
+          </div>
+          <p className="text-text-muted text-xs text-center mt-5">Voraussetzungen: Ads-Budget mind. 300 Euro/Monat aktiv, Zugänge innerhalb 48h übergeben.</p>
         </motion.div>
 
         {/* ROI calculator */}
@@ -182,7 +195,7 @@ export default function Pricing() {
                 Handwerker-Szenario
               </p>
               <p className="text-text-mid text-sm leading-relaxed">
-                2 neue Aufträge pro Monat x 800 Euro = <span className="font-semibold text-primary">1.600 Euro pro Monat zusätzlich.</span>
+                2 neue Aufträge pro Monat x 600 Euro = <span className="font-semibold text-primary">1.200 Euro pro Monat zusätzlich.</span>
               </p>
               <p className="text-accent font-bold mt-3 text-base md:text-lg">
                 Dauerhaft. Ohne Ihr Zutun.
@@ -194,10 +207,10 @@ export default function Pricing() {
               variants={fadeUp}
             >
               <p className="text-text-dark font-semibold mb-2">
-                Zahnarzt-Szenario
+                Coach / Berater-Szenario
               </p>
               <p className="text-text-mid text-sm leading-relaxed">
-                1 neuer Privatpatient = 2.500 Euro Wert. System bezahlt sich mit dem ersten Patienten.
+                1 neuer Coaching-Klient = 1.500 bis 3.000 Euro Wert. <span className="font-semibold text-primary">System amortisiert sich innerhalb weniger Wochen.</span>
               </p>
               <p className="text-accent font-bold mt-3 text-base md:text-lg">
                 Dauerhaft. Ohne Ihr Zutun.

@@ -97,8 +97,8 @@ export default function ProblemStrip() {
             berechenbar.
           </p>
           <p className="text-xl font-bold md:text-2xl">
-            3&nbsp;verlorene Anfragen &times;&nbsp;&euro;800 =
-            &euro;2.400/Monat. &euro;28.800/Jahr.
+            3&nbsp;verlorene Auftr&auml;ge &times;&nbsp;&euro;600 =
+            &euro;1.800/Monat. &euro;21.600/Jahr.
           </p>
         </motion.div>
       </div>
