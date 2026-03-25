@@ -17,16 +17,16 @@ export default function ContactForm() {
         {/* GHL Booking Calendar */}
         <div className="rounded-2xl bg-white p-2 shadow-sm">
           <iframe
-            src="https://api.leadconnectorhq.com/widget/booking/kgwtAWrmyfyVBqZ0C44p"
+            src="https://links.dasauftragswerk.de/widget/booking/FTvBMxR1K7H3NEe3WrqM"
             style={{ width: "100%", border: "none", overflow: "hidden" }}
             scrolling="no"
-            id="kgwtAWrmyfyVBqZ0C44p_1773219288912"
+            id="FTvBMxR1K7H3NEe3WrqM_1774414805284"
             height="700"
           />
         </div>
 
         <Script
-          src="https://link.msgsndr.com/js/form_embed.js"
+          src="https://links.dasauftragswerk.de/js/form_embed.js"
           strategy="afterInteractive"
         />
 
