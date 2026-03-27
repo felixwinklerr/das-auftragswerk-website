@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Impressum — Das Auftragswerk",
+  title: "Impressum - Das Auftragswerk",
   description: "Impressum und Angaben gemäß § 5 TMG.",
 };
 

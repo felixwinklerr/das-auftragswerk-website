@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung — Das Auftragswerk",
+  title: "Datenschutzerklärung - Das Auftragswerk",
   description: "Datenschutzerklärung gemäß DSGVO.",
 };
 

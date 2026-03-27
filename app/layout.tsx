@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Das Auftragswerk — Automatische Anfragen-Systeme für deutsche Dienstleister",
+  title: "Das Auftragswerk - Automatische Anfragen-Systeme für deutsche Dienstleister",
   description:
     "In 14 Tagen ein funktionierendes Anfragen-System: Landing Page, Google Business, Follow-up Automatisierung. Einmalig, kein Abo. System gehört Ihnen.",
   icons: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   openGraph: {
-    title: "Das Auftragswerk — Automatische Anfragen-Systeme für deutsche Dienstleister",
+    title: "Das Auftragswerk - Automatische Anfragen-Systeme für deutsche Dienstleister",
     description:
       "In 14 Tagen ein funktionierendes Anfragen-System: Landing Page, Google Business, Follow-up Automatisierung. Einmalig, kein Abo. System gehört Ihnen.",
     type: "website",
