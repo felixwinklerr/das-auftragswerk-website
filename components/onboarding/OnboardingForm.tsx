@@ -579,10 +579,10 @@ export default function OnboardingForm() {
 
                 <div className="flex flex-col gap-2 w-full mb-6">
                   <label className="text-[var(--color-text-dark)] font-medium text-sm">
-                    Plattformen (optional)
+                    Zugänge die wir benötigen
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-                    {['Google Business Profil', 'Google Ads', 'Meta Business Manager / Facebook', 'Website (CMS / Hosting)'].map((plat) => (
+                    {['Google Business Profil', 'Google Ads'].map((plat) => (
                       <label
                         key={plat}
                         className="flex items-center gap-2 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-[var(--color-bg-gray)] transition-colors"
@@ -604,14 +604,27 @@ export default function OnboardingForm() {
                       </label>
                     ))}
                   </div>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-2">
+                    Wir werden immer als Manager eingeladen, nie als Login. Ihr Passwort bleibt bei Ihnen.
+                  </p>
                 </div>
 
-                <SelectField
-                  label="Welches CMS nutzen Sie?"
-                  options={['WordPress', 'Wix', 'Shopify', 'Sonstiges', 'Weiß nicht']}
-                  value={data.cms}
-                  onChange={(e) => updateField('cms', e.target.value)}
-                />
+                <div className="flex flex-col gap-2 w-full mb-6">
+                  <label className="text-[var(--color-text-dark)] font-medium text-sm">Domain-Anbieter</label>
+                  <p className="text-xs text-[var(--color-text-muted)] mb-2">
+                    Wir bauen Ihre Landing Page und verbinden sie mit Ihrer Domain. Ihre bestehende Website wird nicht angefasst.
+                  </p>
+                  <select
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base bg-white focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent outline-none transition-all cursor-pointer"
+                    value={data.cms}
+                    onChange={(e) => updateField('cms', e.target.value)}
+                  >
+                    <option value="" disabled>Bitte wählen...</option>
+                    {['IONOS', 'Strato', 'GoDaddy', 'Namecheap', 'All-Inkl', 'Hetzner', 'Sonstiges', 'Noch keine Domain'].map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
 
                 <TextAreaField
                   label="Gibt es Besonderheiten beim Zugang? (optional)"
@@ -779,34 +792,29 @@ export default function OnboardingForm() {
                       {data.plattformen.includes('Google Ads') && (
                         <div>
                           <p className="text-sm font-medium text-[var(--color-text-dark)] mb-1">Google Ads</p>
+                          <p className="text-xs text-[var(--color-text-muted)] mb-2">Kein Login nötig — wir verknüpfen Ihr Konto mit unserem Manager-Konto (MCC). Sie behalten volle Kontrolle und Budgethoheit.</p>
                           <ol className="text-sm text-[var(--color-text-muted)] space-y-1 list-decimal list-inside">
                             <li>Öffnen Sie <span className="font-medium">ads.google.com</span> und melden Sie sich an</li>
                             <li>Klicken Sie oben rechts auf das Werkzeug-Symbol</li>
                             <li>Gehen Sie zu <span className="font-medium">"Einrichtung" → "Zugriff und Sicherheit"</span></li>
-                            <li>Klicken Sie auf das <span className="font-medium">Plus-Symbol (+)</span></li>
-                            <li>Tragen Sie ein: <span className="font-medium text-[var(--color-primary)]">zugang@dasauftragswerk.de</span> mit Rolle <span className="font-medium">"Administrator"</span></li>
+                            <li>Wählen Sie den Reiter <span className="font-medium">"Manager"</span></li>
+                            <li>Klicken Sie auf <span className="font-medium">"Manager-Konto verknüpfen"</span></li>
+                            <li>Tragen Sie unsere Manager-ID ein: <span className="font-medium text-[var(--color-primary)]">Diese erhalten Sie per Email nach dem Kick-off</span></li>
                           </ol>
+                          <p className="text-xs text-[var(--color-text-muted)] mt-2">Kein Google Ads Konto? Kein Problem — wir erstellen es direkt für Sie beim Kick-off.</p>
                         </div>
                       )}
-                      {data.plattformen.includes('Meta Business Manager / Facebook') && (
+                      {(data.cms && data.cms !== 'Noch keine Domain') && (
                         <div>
-                          <p className="text-sm font-medium text-[var(--color-text-dark)] mb-1">Meta Business Manager</p>
+                          <p className="text-sm font-medium text-[var(--color-text-dark)] mb-1">Domain verbinden ({data.cms})</p>
+                          <p className="text-xs text-[var(--color-text-muted)] mb-2">Wir bauen Ihre Landing Page und verbinden sie mit einer Subdomain (z.B. anfragen.ihredomain.de). Ihre bestehende Website wird nicht verändert.</p>
                           <ol className="text-sm text-[var(--color-text-muted)] space-y-1 list-decimal list-inside">
-                            <li>Öffnen Sie <span className="font-medium">business.facebook.com</span></li>
-                            <li>Klicken Sie links auf <span className="font-medium">"Einstellungen" (Zahnrad)</span></li>
-                            <li>Gehen Sie zu <span className="font-medium">"Nutzer" → "Partner"</span></li>
-                            <li>Klicken Sie auf <span className="font-medium">"Partner hinzufügen"</span></li>
-                            <li>Tragen Sie ein: <span className="font-medium text-[var(--color-primary)]">zugang@dasauftragswerk.de</span></li>
+                            <li>Melden Sie sich bei <span className="font-medium">{data.cms}</span> an und öffnen Sie die DNS-Einstellungen Ihrer Domain</li>
+                            <li>Sie erhalten von uns nach dem Kick-off zwei DNS-Einträge (A-Record + CNAME)</li>
+                            <li>Diese Einträge einfach eintragen — dauert ca. 5 Minuten</li>
+                            <li>HTTPS wird automatisch eingerichtet</li>
                           </ol>
-                        </div>
-                      )}
-                      {data.plattformen.includes('Website (CMS / Hosting)') && (
-                        <div>
-                          <p className="text-sm font-medium text-[var(--color-text-dark)] mb-1">Website-Zugang</p>
-                          <p className="text-sm text-[var(--color-text-muted)]">
-                            Bitte legen Sie uns einen Admin-Benutzer in Ihrem CMS an
-                            {data.cms && data.cms !== 'Weiß nicht' ? ` (${data.cms})` : ''} oder senden Sie uns die Zugangsdaten sicher beim Kick-off Call.
-                          </p>
+                          <p className="text-xs text-[var(--color-text-muted)] mt-2">Wir begleiten Sie dabei, falls etwas unklar ist.</p>
                         </div>
                       )}
                     </div>
