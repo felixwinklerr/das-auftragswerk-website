@@ -1,8 +1,18 @@
 import Image from 'next/image';
+import { Suspense } from 'react';
 import OnboardingForm from '@/components/onboarding/OnboardingForm';
 
 export const metadata = {
-  title: 'Onboarding | Das Auftragswerk',
+  title: 'Onboarding-Fragebogen | Das Auftragswerk',
+  description:
+    'Füllen Sie den Onboarding-Fragebogen aus, damit wir Ihr Anfragen-System optimal einrichten können.',
+  openGraph: {
+    title: 'Onboarding-Fragebogen | Das Auftragswerk',
+    description:
+      'Füllen Sie den Onboarding-Fragebogen aus, damit wir Ihr Anfragen-System optimal einrichten können.',
+    type: 'website',
+    locale: 'de_DE',
+  },
 };
 
 export default function OnboardingPage() {
@@ -18,14 +28,17 @@ export default function OnboardingPage() {
           priority
         />
         <h1 className="mt-8 text-3xl font-extrabold text-[var(--color-primary)] text-center">
-          Willkommen beim Kick-off
+          Willkommen beim Onboarding
         </h1>
         <p className="mt-4 text-[var(--color-text-muted)] text-center max-w-xl text-lg">
-          Bitte nehmen Sie sich einige Minuten Zeit, um uns die wichtigsten Informationen zu Ihrem Betrieb zu geben, damit wir optimal starten können.
+          Bitte nehmen Sie sich ca. 20 Minuten Zeit. Ihre Antworten helfen uns, Ihr Anfragen-System optimal
+          einzurichten.
         </p>
       </div>
 
-      <OnboardingForm />
+      <Suspense fallback={<div className="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-12 text-center text-[var(--color-text-muted)]">Laden...</div>}>
+        <OnboardingForm />
+      </Suspense>
     </main>
   );
 }

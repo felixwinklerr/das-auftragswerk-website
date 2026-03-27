@@ -3,18 +3,22 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    
-    // Log it to console (we'll add GHL webhook later)
+
     console.log('New Onboarding Submission:', JSON.stringify(data, null, 2));
-    
-    // Placeholder GHL_WEBHOOK_URL env var that we can configure later
+
+    // Forward to GHL Inbound Webhook if configured
     const GHL_WEBHOOK_URL = process.env.GHL_WEBHOOK_URL;
     if (GHL_WEBHOOK_URL) {
-      // await fetch(GHL_WEBHOOK_URL, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data)
-      // });
+      try {
+        await fetch(GHL_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+      } catch (webhookError) {
+        // Log but don't fail the user submission
+        console.error('GHL Webhook Error:', webhookError);
+      }
     }
 
     return NextResponse.json({ success: true, message: 'Data received' }, { status: 200 });
