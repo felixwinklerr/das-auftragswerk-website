@@ -569,10 +569,11 @@ export default function OnboardingForm() {
             {/* ── STEP 6: Zugänge ── */}
             {step === 6 && (
               <div>
-                <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">Zugänge</h3>
+                <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">Zugänge vorbereiten</h3>
                 <div className="bg-blue-50 border border-blue-100 p-4 rounded-xl mb-8">
-                  <p className="text-sm text-blue-800">
-                    Damit wir sofort loslegen können, fügen Sie uns als Manager zu Ihren Plattformen hinzu. Sie erhalten dafür eine Einladung per Email nach dem Kick-off. Wir zeigen Ihnen alle Schritte:
+                  <p className="text-sm text-blue-800 font-medium mb-1">Was passiert als Nächstes?</p>
+                  <p className="text-sm text-blue-700">
+                    Nach dem Absenden erhalten Sie eine detaillierte Schritt-für-Schritt Anleitung, wie Sie uns als Manager zu Ihren Plattformen hinzufügen. Wir richten das gemeinsam beim Kick-off Call ein.
                   </p>
                 </div>
 
@@ -739,26 +740,84 @@ export default function OnboardingForm() {
 
             {/* ── STEP 9: Kick-off buchen ── */}
             {step === 9 && (
-              <div className="flex flex-col items-center text-center py-4">
-                <h3 className="text-3xl font-bold text-[var(--color-primary)] mb-4">Schritt 9: Kick-off Termin buchen</h3>
-                <p className="text-[var(--color-text-muted)] text-lg mb-8">
-                  Wir haben Ihre Antworten erhalten. Bitte buchen Sie nun Ihren Kick-off Termin.
-                </p>
-
-                <div className="w-full max-w-lg mx-auto bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8">
-                   <iframe src="https://links.dasauftragswerk.de/widget/booking/eUDF4XVM1HiX1SG5Jx7y" style={{ width: '100%', height: '600px', border: 'none', overflow: 'hidden' }} scrolling="no"></iframe>
+              <div className="flex flex-col py-4">
+                {/* Success header */}
+                <div className="text-center mb-8">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-2">Fragebogen erhalten.</h3>
+                  <p className="text-[var(--color-text-muted)]">Buchen Sie jetzt Ihren Kick-off Termin.</p>
                 </div>
 
-                <div className="w-full max-w-lg mx-auto text-left bg-[var(--color-bg-gray)] p-6 rounded-xl mb-6">
-                  <h4 className="font-semibold text-[var(--color-text-dark)] mb-3">Plattform-Guides (optional)</h4>
-                  <ul className="text-sm text-[var(--color-text-muted)] space-y-2">
-                    <li>• <a href="https://support.google.com/business/answer/3038063?hl=de" target="_blank" rel="noreferrer" className="text-[var(--color-accent)] hover:underline">Google Business Profil Zugriffsrechte vergeben</a></li>
-                    <li>• <a href="https://www.facebook.com/business/help/" target="_blank" rel="noreferrer" className="text-[var(--color-accent)] hover:underline">Meta Business Manager Hilfe</a></li>
-                  </ul>
+                {/* Booking */}
+                <div className="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8">
+                  <iframe src="https://links.dasauftragswerk.de/widget/booking/eUDF4XVM1HiX1SG5Jx7y" style={{ width: '100%', height: '600px', border: 'none', overflow: 'hidden' }} scrolling="no" />
                 </div>
 
-                <button onClick={() => window.location.href = '/'} className="px-6 py-2.5 text-sm text-[var(--color-text-muted)] hover:bg-gray-100 rounded-lg transition-colors">
-                  Später buchen
+                {/* Access guides — only shown if platforms selected */}
+                {data.plattformen.length > 0 && (
+                  <div className="w-full bg-[var(--color-bg-gray)] rounded-xl p-6 mb-6">
+                    <p className="text-sm font-semibold text-[var(--color-text-dark)] mb-4">
+                      So bereiten Sie die Zugänge vor (optional, wir machen das auch gemeinsam im Call):
+                    </p>
+                    <div className="space-y-5">
+                      {data.plattformen.includes('Google Business Profil') && (
+                        <div>
+                          <p className="text-sm font-medium text-[var(--color-text-dark)] mb-1">Google Business Profil</p>
+                          <ol className="text-sm text-[var(--color-text-muted)] space-y-1 list-decimal list-inside">
+                            <li>Öffnen Sie <span className="font-medium">business.google.com</span> und melden Sie sich an</li>
+                            <li>Klicken Sie oben rechts auf das Zahnrad-Symbol (Einstellungen)</li>
+                            <li>Wählen Sie <span className="font-medium">"Manager"</span> und dann <span className="font-medium">"Nutzer hinzufügen"</span></li>
+                            <li>Tragen Sie ein: <span className="font-medium text-[var(--color-primary)]">zugang@dasauftragswerk.de</span></li>
+                            <li>Wählen Sie die Rolle <span className="font-medium">"Manager"</span> und bestätigen</li>
+                          </ol>
+                        </div>
+                      )}
+                      {data.plattformen.includes('Google Ads') && (
+                        <div>
+                          <p className="text-sm font-medium text-[var(--color-text-dark)] mb-1">Google Ads</p>
+                          <ol className="text-sm text-[var(--color-text-muted)] space-y-1 list-decimal list-inside">
+                            <li>Öffnen Sie <span className="font-medium">ads.google.com</span> und melden Sie sich an</li>
+                            <li>Klicken Sie oben rechts auf das Werkzeug-Symbol</li>
+                            <li>Gehen Sie zu <span className="font-medium">"Einrichtung" → "Zugriff und Sicherheit"</span></li>
+                            <li>Klicken Sie auf das <span className="font-medium">Plus-Symbol (+)</span></li>
+                            <li>Tragen Sie ein: <span className="font-medium text-[var(--color-primary)]">zugang@dasauftragswerk.de</span> mit Rolle <span className="font-medium">"Administrator"</span></li>
+                          </ol>
+                        </div>
+                      )}
+                      {data.plattformen.includes('Meta Business Manager / Facebook') && (
+                        <div>
+                          <p className="text-sm font-medium text-[var(--color-text-dark)] mb-1">Meta Business Manager</p>
+                          <ol className="text-sm text-[var(--color-text-muted)] space-y-1 list-decimal list-inside">
+                            <li>Öffnen Sie <span className="font-medium">business.facebook.com</span></li>
+                            <li>Klicken Sie links auf <span className="font-medium">"Einstellungen" (Zahnrad)</span></li>
+                            <li>Gehen Sie zu <span className="font-medium">"Nutzer" → "Partner"</span></li>
+                            <li>Klicken Sie auf <span className="font-medium">"Partner hinzufügen"</span></li>
+                            <li>Tragen Sie ein: <span className="font-medium text-[var(--color-primary)]">zugang@dasauftragswerk.de</span></li>
+                          </ol>
+                        </div>
+                      )}
+                      {data.plattformen.includes('Website (CMS / Hosting)') && (
+                        <div>
+                          <p className="text-sm font-medium text-[var(--color-text-dark)] mb-1">Website-Zugang</p>
+                          <p className="text-sm text-[var(--color-text-muted)]">
+                            Bitte legen Sie uns einen Admin-Benutzer in Ihrem CMS an
+                            {data.cms && data.cms !== 'Weiß nicht' ? ` (${data.cms})` : ''} oder senden Sie uns die Zugangsdaten sicher beim Kick-off Call.
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                    <p className="text-xs text-[var(--color-text-muted)] mt-4 pt-4 border-t border-gray-200">
+                      Kein Passwort teilen. Wir werden immer als Manager eingeladen, nie als Login-Benutzer.
+                    </p>
+                  </div>
+                )}
+
+                <button onClick={() => window.location.href = '/'} className="text-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text-dark)] transition-colors mt-2">
+                  Termin später buchen
                 </button>
               </div>
             )}
