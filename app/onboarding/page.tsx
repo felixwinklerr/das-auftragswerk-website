@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import { Suspense } from 'react';
-import OnboardingForm from '@/components/onboarding/OnboardingForm';
+import OnboardingExperience from '@/components/onboarding/OnboardingExperience';
 
 export const metadata = {
   title: 'Onboarding-Fragebogen | Das Auftragswerk',
@@ -31,14 +30,21 @@ export default function OnboardingPage() {
           Willkommen beim Onboarding
         </h1>
         <p className="mt-4 text-[var(--color-text-muted)] text-center max-w-xl text-lg">
-          Bitte nehmen Sie sich ca. 20 Minuten Zeit. Ihre Antworten helfen uns, Ihr Anfragen-System optimal
-          einzurichten.
+          Planen Sie ca. 20 Minuten ein. Mit Ihren Antworten richten wir Ihr Anfragen-System passgenau ein.
         </p>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+          {['Zwischenspeicherung aktiv', 'DSGVO-konform', 'In 10 klaren Schritten'].map((item) => (
+            <span
+              key={item}
+              className="px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs font-medium text-[var(--color-text-muted)]"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
       </div>
 
-      <Suspense fallback={<div className="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-12 text-center text-[var(--color-text-muted)]">Laden...</div>}>
-        <OnboardingForm />
-      </Suspense>
+      <OnboardingExperience />
     </main>
   );
 }
