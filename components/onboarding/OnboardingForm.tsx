@@ -27,7 +27,9 @@ interface FormData {
   googleBusiness: string;
   googleBusinessLink: string;
   bewertungen: string;
-  socialMedia: string;
+  instagram: string;
+  facebook: string;
+  linkedin: string;
   adsErfahrung: string;
   
   // Step 6: Zugänge
@@ -67,7 +69,9 @@ const initialData: FormData = {
   googleBusiness: '',
   googleBusinessLink: '',
   bewertungen: '',
-  socialMedia: '',
+  instagram: '',
+  facebook: '',
+  linkedin: '',
   adsErfahrung: '',
   plattformen: [],
   cms: '',
@@ -219,7 +223,21 @@ export default function OnboardingForm() {
       if (!data.standort) errs.push('Standort ist erforderlich.');
       if (data.branche !== 'Coach/Berater' && !data.einzugsgebiet) errs.push('Einzugsgebiet ist erforderlich.');
     }
+    if (s === 2) {
+      if (!data.auftragswert) errs.push('Auftragswert ist erforderlich.');
+      if (!data.anfragenProWoche) errs.push('Anzahl Anfragen pro Woche ist erforderlich.');
+    }
+    if (s === 4) {
+      if (!data.anfragenProzess) errs.push('Anfragen-Prozess ist erforderlich.');
+      if (!data.antwortGeschwindigkeit) errs.push('Antwortgeschwindigkeit ist erforderlich.');
+    }
+    if (s === 7) {
+      if (!data.budget) errs.push('Werbebudget ist erforderlich.');
+      if (!data.kommunikation) errs.push('Kommunikationskanal ist erforderlich.');
+    }
     if (s === 8) {
+      if (!data.ziel) errs.push('Bitte beschreiben Sie Ihr wichtigstes Ziel.');
+      if (!data.neukundenZiel) errs.push('Neukunden-Ziel ist erforderlich.');
       if (!data.dsgvoConsent) errs.push('Bitte stimmen Sie der Datenschutzerklärung zu.');
     }
     setErrors(errs);
@@ -367,7 +385,7 @@ export default function OnboardingForm() {
                 />
                 {data.branche !== 'Coach/Berater' && (
                   <InputField
-                    label="Einzugsgebiet / Radius in km"
+                    label="Aktionsradius (km)"
                     required
                     type="number"
                     placeholder="Wie weit fahren Sie zu Kunden?"
@@ -522,10 +540,22 @@ export default function OnboardingForm() {
                   onChange={(e) => updateField('bewertungen', e.target.value)}
                 />
                 <InputField
-                  label="Social Media Profile"
-                  placeholder="Instagram, Facebook, LinkedIn URLs"
-                  value={data.socialMedia}
-                  onChange={(e) => updateField('socialMedia', e.target.value)}
+                  label="Instagram URL (optional)"
+                  placeholder="https://instagram.com/ihrprofil"
+                  value={data.instagram}
+                  onChange={(e) => updateField('instagram', e.target.value)}
+                />
+                <InputField
+                  label="Facebook URL (optional)"
+                  placeholder="https://facebook.com/ihrseite"
+                  value={data.facebook}
+                  onChange={(e) => updateField('facebook', e.target.value)}
+                />
+                <InputField
+                  label="LinkedIn URL (optional)"
+                  placeholder="https://linkedin.com/in/ihrprofil"
+                  value={data.linkedin}
+                  onChange={(e) => updateField('linkedin', e.target.value)}
                 />
                 <TextAreaField
                   label="Erfahrung mit Google Ads / Online-Werbung?"
