@@ -29,10 +29,13 @@ interface FormData {
   bewertungen: string;
   socialMedia: string;
   adsErfahrung: string;
-  googleEmail: string;
-  adsEmail: string;
-  websiteZugang: string;
-  brandingDateien: string;
+  
+  // Step 6: Zugänge
+  plattformen: string[];
+  cms: string;
+  besonderheiten: string;
+  logoFile: File | null;
+
   budget: string;
   kommunikation: string;
   ziel: string;
@@ -66,10 +69,10 @@ const initialData: FormData = {
   bewertungen: '',
   socialMedia: '',
   adsErfahrung: '',
-  googleEmail: '',
-  adsEmail: '',
-  websiteZugang: '',
-  brandingDateien: '',
+  plattformen: [],
+  cms: '',
+  besonderheiten: '',
+  logoFile: null,
   budget: '',
   kommunikation: '',
   ziel: '',
@@ -88,6 +91,7 @@ const stepTitles = [
   'Zugänge',
   'Budget & Kommunikation',
   'Ziele',
+  'Kick-off buchen',
 ];
 
 /* ─── Reusable field components (defined outside to prevent remount) ─── */
@@ -189,7 +193,6 @@ export default function OnboardingForm() {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<FormData>(initialData);
   const [direction, setDirection] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -242,21 +245,32 @@ export default function OnboardingForm() {
     if (!validateStep(8)) return;
     setLoading(true);
     try {
-      const payload = {
-        ...data,
-        contactId: contactRef || undefined,
-        tags: ['fragebogen-erhalten'],
-      };
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        if (key === 'logoFile') {
+          if (value) formData.append('logoFile', value as File);
+        } else if (Array.isArray(value)) {
+          value.forEach((v) => formData.append(key, v));
+        } else {
+          formData.append(key, String(value));
+        }
+      });
+      
+      formData.append('contactId', contactRef || '');
+      formData.append('tags', 'fragebogen-erhalten');
+
       const res = await fetch('/api/onboarding', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: formData,
       });
+      
       if (res.ok) {
-        setSubmitted(true);
+        setDirection(1);
+        setStep(9);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
+        const errorData = await res.json().catch(() => ({}));
+        alert(`Ein Fehler ist aufgetreten: ${errorData.error || 'Bitte versuchen Sie es später erneut.'}`);
       }
     } catch (e) {
       console.error(e);
@@ -266,28 +280,6 @@ export default function OnboardingForm() {
     }
   };
 
-  /* ─── Success Screen ─── */
-  if (submitted) {
-    return (
-      <div className="flex flex-col items-center justify-center py-20 text-center">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-          className="w-24 h-24 bg-[var(--color-bg-blue)] text-[var(--color-primary)] rounded-full flex items-center justify-center mb-6"
-        >
-          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-          </svg>
-        </motion.div>
-        <h2 className="text-3xl font-bold text-[var(--color-primary)] mb-4">Vielen Dank!</h2>
-        <p className="text-[var(--color-text-muted)] text-lg max-w-md">
-          Wir haben Ihre Antworten erhalten und melden uns in Kürze für den Kick-off.
-        </p>
-      </div>
-    );
-  }
-
   /* ─── Render ─── */
   return (
     <div className="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden mb-20">
@@ -295,7 +287,7 @@ export default function OnboardingForm() {
       <div className="bg-[var(--color-bg-gray)] p-6 border-b border-gray-100">
         <div className="flex justify-between items-end mb-2">
           <span className="text-xs font-semibold text-[var(--color-accent)] uppercase tracking-wider">
-            Schritt {step} von 8
+            Schritt {step} von 9
           </span>
           <span className="text-sm font-medium text-[var(--color-text-muted)]">{stepTitles[step - 1]}</span>
         </div>
@@ -303,7 +295,7 @@ export default function OnboardingForm() {
           <motion.div
             className="h-full bg-[var(--color-primary)]"
             initial={{ width: 0 }}
-            animate={{ width: `${(step / 8) * 100}%` }}
+            animate={{ width: `${(step / 9) * 100}%` }}
             transition={{ duration: 0.3 }}
           />
         </div>
@@ -547,34 +539,80 @@ export default function OnboardingForm() {
             {/* ── STEP 6: Zugänge ── */}
             {step === 6 && (
               <div>
-                <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-8">Zugänge</h3>
-                <InputField
-                  label="Google Business Profil Login Email"
-                  type="email"
-                  value={data.googleEmail}
-                  onChange={(e) => updateField('googleEmail', e.target.value)}
-                />
-                <InputField
-                  label="Google Ads Konto Login (optional)"
-                  type="email"
-                  value={data.adsEmail}
-                  onChange={(e) => updateField('adsEmail', e.target.value)}
-                />
-                <InputField
-                  label="Website-Zugang"
-                  placeholder="Hosting-Anbieter, CMS (WordPress, Wix etc.)"
-                  value={data.websiteZugang}
-                  onChange={(e) => updateField('websiteZugang', e.target.value)}
-                />
+                <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-4">Zugänge</h3>
+                <div className="bg-blue-50 border border-blue-100 p-4 rounded-xl mb-8">
+                  <p className="text-sm text-blue-800">
+                    Damit wir sofort loslegen können, fügen Sie uns als Manager zu Ihren Plattformen hinzu. Sie erhalten dafür eine Einladung per Email nach dem Kick-off. Wir zeigen Ihnen alle Schritte:
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-2 w-full mb-6">
+                  <label className="text-[var(--color-text-dark)] font-medium text-sm">
+                    Plattformen (optional)
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
+                    {['Google Business Profil', 'Google Ads', 'Meta Business Manager / Facebook', 'Website (CMS / Hosting)'].map((plat) => (
+                      <label
+                        key={plat}
+                        className="flex items-center gap-2 cursor-pointer p-3 border border-gray-200 rounded-lg hover:bg-[var(--color-bg-gray)] transition-colors"
+                      >
+                        <input
+                          type="checkbox"
+                          className="w-4 h-4 text-[var(--color-accent)] rounded focus:ring-[var(--color-accent)]"
+                          checked={data.plattformen.includes(plat)}
+                          onChange={() => {
+                            const current = data.plattformen;
+                            if (current.includes(plat)) {
+                              updateField('plattformen', current.filter((i) => i !== plat));
+                            } else {
+                              updateField('plattformen', [...current, plat]);
+                            }
+                          }}
+                        />
+                        <span className="text-sm text-[var(--color-text-dark)]">{plat}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
                 <SelectField
-                  label="Logo & Branding-Dateien vorhanden?"
-                  options={['Ja, kann ich mitschicken', 'Nein, habe keine']}
-                  value={data.brandingDateien}
-                  onChange={(e) => updateField('brandingDateien', e.target.value)}
+                  label="Welches CMS nutzen Sie?"
+                  options={['WordPress', 'Wix', 'Shopify', 'Sonstiges', 'Weiß nicht']}
+                  value={data.cms}
+                  onChange={(e) => updateField('cms', e.target.value)}
                 />
-                <p className="text-sm text-[var(--color-text-muted)] italic -mt-3 mb-6">
-                  Zugänge können auch beim Kick-off besprochen werden.
-                </p>
+
+                <TextAreaField
+                  label="Gibt es Besonderheiten beim Zugang? (optional)"
+                  placeholder="z.B. Zwei-Faktor-Authentifizierung, spezielle Hosting-Anbieter"
+                  value={data.besonderheiten}
+                  onChange={(e) => updateField('besonderheiten', e.target.value)}
+                />
+
+                <div className="flex flex-col gap-2 w-full mb-6">
+                  <label className="text-[var(--color-text-dark)] font-medium text-sm">
+                    Logo & Branding (PNG/JPG/SVG/PDF, max 10MB)
+                  </label>
+                  <input
+                    type="file"
+                    accept=".png,.jpg,.jpeg,.svg,.pdf"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[var(--color-bg-blue)] file:text-[var(--color-primary)] hover:file:bg-blue-100 transition-all cursor-pointer"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        if (file.size > 10 * 1024 * 1024) {
+                          alert('Die Datei ist zu groß (max. 10MB).');
+                          e.target.value = '';
+                        } else {
+                          updateField('logoFile', file);
+                        }
+                      } else {
+                        updateField('logoFile', null);
+                      }
+                    }}
+                  />
+                  {data.logoFile && <p className="text-xs text-green-600 mt-1">Ausgewählt: {data.logoFile.name}</p>}
+                </div>
               </div>
             )}
 
@@ -668,49 +706,77 @@ export default function OnboardingForm() {
                 </div>
               </div>
             )}
+
+            {/* ── STEP 9: Kick-off buchen ── */}
+            {step === 9 && (
+              <div className="flex flex-col items-center text-center py-4">
+                <h3 className="text-3xl font-bold text-[var(--color-primary)] mb-4">Schritt 9: Kick-off Termin buchen</h3>
+                <p className="text-[var(--color-text-muted)] text-lg mb-8">
+                  Wir haben Ihre Antworten erhalten. Bitte buchen Sie nun Ihren Kick-off Termin.
+                </p>
+
+                <div className="w-full max-w-lg mx-auto bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8">
+                   <iframe src="https://links.dasauftragswerk.de/widget/booking/eUDF4XVM1HiX1SG5Jx7y" style={{ width: '100%', height: '600px', border: 'none', overflow: 'hidden' }} scrolling="no"></iframe>
+                </div>
+
+                <div className="w-full max-w-lg mx-auto text-left bg-[var(--color-bg-gray)] p-6 rounded-xl mb-6">
+                  <h4 className="font-semibold text-[var(--color-text-dark)] mb-3">Plattform-Guides (optional)</h4>
+                  <ul className="text-sm text-[var(--color-text-muted)] space-y-2">
+                    <li>• <a href="https://support.google.com/business/answer/3038063?hl=de" target="_blank" rel="noreferrer" className="text-[var(--color-accent)] hover:underline">Google Business Profil Zugriffsrechte vergeben</a></li>
+                    <li>• <a href="https://www.facebook.com/business/help/" target="_blank" rel="noreferrer" className="text-[var(--color-accent)] hover:underline">Meta Business Manager Hilfe</a></li>
+                  </ul>
+                </div>
+
+                <button onClick={() => window.location.href = '/'} className="px-6 py-2.5 text-sm text-[var(--color-text-muted)] hover:bg-gray-100 rounded-lg transition-colors">
+                  Später buchen
+                </button>
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Footer Navigation */}
-      <div className="bg-gray-50 p-6 md:px-12 border-t border-gray-100 flex items-center justify-between">
-        <button
-          onClick={prevStep}
-          disabled={step === 1}
-          className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
-            step === 1
-              ? 'opacity-0 pointer-events-none'
-              : 'text-[var(--color-text-muted)] hover:bg-gray-200 hover:text-[var(--color-text-dark)]'
-          }`}
-        >
-          Zurück
-        </button>
+      {/* Footer Navigation (Hidden on Step 9) */}
+      {step < 9 && (
+        <div className="bg-gray-50 p-6 md:px-12 border-t border-gray-100 flex items-center justify-between">
+          <button
+            onClick={prevStep}
+            disabled={step === 1}
+            className={`px-6 py-2.5 rounded-lg font-medium transition-all ${
+              step === 1
+                ? 'opacity-0 pointer-events-none'
+                : 'text-[var(--color-text-muted)] hover:bg-gray-200 hover:text-[var(--color-text-dark)]'
+            }`}
+          >
+            Zurück
+          </button>
 
-        {step < 8 ? (
-          <button
-            onClick={nextStep}
-            className="px-8 py-3 bg-[var(--color-primary)] hover:bg-[#082a4d] text-white rounded-lg font-semibold shadow-md transition-all flex items-center gap-2"
-          >
-            Weiter
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        ) : (
-          <button
-            onClick={submitForm}
-            disabled={loading}
-            className="px-8 py-3 bg-[var(--color-accent)] hover:bg-[#e6752d] text-white rounded-lg font-semibold shadow-lg shadow-orange-500/30 transition-all flex items-center gap-2 disabled:opacity-50"
-          >
-            {loading ? 'Wird gesendet...' : 'Abschließen'}
-            {!loading && (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          {step < 8 ? (
+            <button
+              onClick={nextStep}
+              className="px-8 py-3 bg-[var(--color-primary)] hover:bg-[#082a4d] text-white rounded-lg font-semibold shadow-md transition-all flex items-center gap-2"
+            >
+              Weiter
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            )}
-          </button>
-        )}
-      </div>
+            </button>
+          ) : (
+            <button
+              onClick={submitForm}
+              disabled={loading}
+              className="px-8 py-3 bg-[var(--color-accent)] hover:bg-[#e6752d] text-white rounded-lg font-semibold shadow-lg shadow-orange-500/30 transition-all flex items-center gap-2 disabled:opacity-50"
+            >
+              {loading ? 'Wird gesendet...' : 'Abschließen'}
+              {!loading && (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              )}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
