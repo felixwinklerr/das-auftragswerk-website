@@ -183,8 +183,8 @@ const slideVariants = {
 /* ─── Main Form Component ─── */
 export default function OnboardingForm() {
   const searchParams = useSearchParams();
-  const contactId = searchParams.get('contactId') || '';
-  const hasContactId = Boolean(contactId);
+  const contactRef = searchParams.get('ref') || '';
+  const hasContactRef = Boolean(contactRef);
 
   const [step, setStep] = useState(1);
   const [data, setData] = useState<FormData>(initialData);
@@ -210,7 +210,7 @@ export default function OnboardingForm() {
   const validateStep = (s: number): boolean => {
     const errs: string[] = [];
     if (s === 1) {
-      if (!hasContactId && !data.email) errs.push('E-Mail-Adresse ist erforderlich.');
+      if (!hasContactRef && !data.email) errs.push('E-Mail-Adresse ist erforderlich.');
       if (!data.firmenname) errs.push('Firmenname ist erforderlich.');
       if (!data.branche) errs.push('Branche ist erforderlich.');
       if (!data.standort) errs.push('Standort ist erforderlich.');
@@ -244,7 +244,7 @@ export default function OnboardingForm() {
     try {
       const payload = {
         ...data,
-        contactId: contactId || undefined,
+        contactId: contactRef || undefined,
         tags: ['fragebogen-erhalten'],
       };
       const res = await fetch('/api/onboarding', {
@@ -337,7 +337,7 @@ export default function OnboardingForm() {
               <div>
                 <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-8">Ihr Betrieb</h3>
 
-                {!hasContactId && (
+                {!hasContactRef && (
                   <>
                     <p className="text-sm text-[var(--color-text-muted)] mb-4 bg-[var(--color-bg-blue)] p-3 rounded-lg">
                       Wir benötigen Ihre E-Mail-Adresse, um Ihre Antworten Ihrem Kundenprofil zuordnen zu können.
