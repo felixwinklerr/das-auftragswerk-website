@@ -22,7 +22,7 @@ const clientTouches: ClientTouch[] = [
 
 const steps: Step[] = [
   { day: "Tag 0", description: "Start: Fragebogen + Zugänge" },
-  { day: "Tag 1–2", description: "Kick-off Call (30 Min)" },
+  { day: "Tag 1–2", description: "Startgespräch (30 Min)" },
   { day: "Tag 3–13", description: "Wir bauen. Sie machen weiter." },
   { day: "Tag 11–12", description: "Ihre Feedback-Runde (20 Min)" },
   { day: "Tag 14", description: "Übergabe. System ist live." },

@@ -96,7 +96,7 @@ const stepTitles = [
   'Budget & Kommunikation',
   'Ziele',
   'Zugänge Schritt für Schritt (optional)',
-  'Kick-off buchen',
+  'Startgespräch buchen',
 ];
 
 /* ─── Reusable field components (defined outside to prevent remount) ─── */
@@ -279,7 +279,7 @@ export default function OnboardingForm() {
       'Budgetrahmen und Kontaktweg',
       'Ziele und rechtliche Zustimmung',
       'Optionale Schritt-für-Schritt Anleitung',
-      'Kick-off Termin buchen',
+      'Termin für Ihr Startgespräch',
     ],
     []
   );
@@ -812,7 +812,7 @@ export default function OnboardingForm() {
                   <p className="text-sm text-blue-700">
                     Die Auswahl ist optional. Wählen Sie nur Plattformen aus, die Sie bereits nutzen.
                     Im nächsten Schritt zeigen wir Ihnen die passende Anleitung - oder Sie überspringen und wir richten
-                    alles gemeinsam im Kick-off Call ein.
+                    alles gemeinsam im Startgespräch ein.
                   </p>
                 </div>
 
@@ -1039,7 +1039,7 @@ export default function OnboardingForm() {
                   <h3 className="text-2xl md:text-3xl font-bold text-[var(--color-primary)] mb-2">Zugänge vorbereiten (optional)</h3>
                   <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto">
                     Hier sehen Sie die nächsten Schritte visuell und klar erklärt. Wenn es Ihnen zu aufwendig ist,
-                    überspringen Sie einfach - wir erledigen alles gemeinsam im Kick-off Call.
+                    überspringen Sie einfach - wir erledigen alles gemeinsam im Startgespräch.
                   </p>
                 </div>
 
@@ -1094,14 +1094,14 @@ export default function OnboardingForm() {
                     }}
                     className="mt-4 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text-dark)] underline underline-offset-2"
                   >
-                    Anleitung überspringen - im Kick-off Call gemeinsam einrichten
+                    Anleitung überspringen - im Startgespräch gemeinsam einrichten
                   </button>
                 </div>
 
                 {data.plattformen.length === 0 && (!data.cms || data.cms === 'Noch keine Domain') && (
                   <div className="w-full bg-white rounded-xl p-4 sm:p-6 border border-gray-100 mb-6">
                     <p className="text-sm text-[var(--color-text-muted)]">
-                      Es wurden noch keine Zugänge ausgewählt. Kein Problem - wir richten alles gemeinsam im Kick-off Call ein.
+                      Es wurden noch keine Zugänge ausgewählt. Kein Problem - wir richten alles gemeinsam im Startgespräch ein.
                     </p>
                   </div>
                 )}
@@ -1166,7 +1166,7 @@ export default function OnboardingForm() {
                                 <li><span className="font-medium">Zugriff und Sicherheit</span> &rarr; Reiter <span className="font-medium">Manager</span>.</li>
                                 <li><span className="font-medium">Manager-Konto verknüpfen</span> auswählen und MCC-ID eintragen.</li>
                               </ol>
-                              <p className="text-xs text-[var(--color-text-muted)] mt-3">Kein Konto vorhanden? Wir legen es im Kick-off Call mit Ihnen an.</p>
+                              <p className="text-xs text-[var(--color-text-muted)] mt-3">Kein Konto vorhanden? Wir legen es im Startgespräch mit Ihnen an.</p>
                             </div>
                           </div>
                         </div>
@@ -1210,7 +1210,7 @@ export default function OnboardingForm() {
               </div>
             )}
 
-            {/* ── STEP 10: Kick-off buchen ── */}
+            {/* ── STEP 10: Startgespräch buchen ── */}
             {step === 10 && (
               <div className="flex flex-col py-4">
                 <div className="text-center mb-8">
@@ -1219,7 +1219,7 @@ export default function OnboardingForm() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-2">Kick-off Termin buchen</h3>
+                  <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-2">Termin für Ihr Startgespräch</h3>
                   <p className="text-[var(--color-text-muted)]">Wählen Sie jetzt einen passenden Termin.</p>
                 </div>
 
@@ -1230,7 +1230,7 @@ export default function OnboardingForm() {
                     src="https://links.dasauftragswerk.de/widget/booking/eUDF4XVM1HiX1SG5Jx7y"
                     style={{ width: '100%', height: '85vh', minHeight: '760px', border: 'none' }}
                     scrolling="yes"
-                    title="Kick-off Termin buchen"
+                    title="Termin für Ihr Startgespräch"
                   />
                 </div>
 
