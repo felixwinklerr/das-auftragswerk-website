@@ -13,22 +13,13 @@ const navLinks = [
 type NavProps = {
   // Orange CTA button in the header (desktop).
   showHeaderCta?: boolean;
-  // Desktop links (and mobile dropdown links).
-  showLinks?: boolean;
-  // Hamburger button + dropdown on mobile.
-  showMobileMenu?: boolean;
+  // Homepage anchor nav links (hide on pages where anchors don't exist).
+  showNavLinks?: boolean;
 };
 
-export default function Nav({
-  showHeaderCta = true,
-  showLinks = true,
-  showMobileMenu = true,
-}: NavProps) {
+export default function Nav({ showHeaderCta = true, showNavLinks = true }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const shouldShowRight = Boolean(showHeaderCta || showMobileMenu);
-  const shouldShowMenuLinks = Boolean(showLinks && showMobileMenu);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -42,11 +33,7 @@ export default function Nav({
         scrolled ? "shadow-md" : ""
       }`}
     >
-      <div
-        className={`mx-auto flex h-16 max-w-7xl items-center px-4 md:h-20 md:px-8 ${
-          shouldShowRight ? "justify-between" : "justify-center"
-        }`}
-      >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-8">
         {/* Logo */}
         <a href="#" className="shrink-0">
           <Image
@@ -60,7 +47,7 @@ export default function Nav({
         </a>
 
         {/* Desktop nav links */}
-        {showLinks && (
+        {showNavLinks && (
           <ul className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -76,56 +63,52 @@ export default function Nav({
         )}
 
         {/* Right side: CTA + hamburger */}
-        {shouldShowRight && (
-          <div className="flex items-center gap-3">
-            {showHeaderCta && (
-              <a
-                href="#kontakt"
-                className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105 md:px-5 md:py-2.5"
-              >
-                Kostenloses Erstgespräch
-              </a>
-            )}
+        <div className="flex items-center gap-3">
+          {showHeaderCta && (
+            <a
+              href="#kontakt"
+              className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105 md:px-5 md:py-2.5"
+            >
+              Kostenloses Erstgespräch
+            </a>
+          )}
 
-            {/* Hamburger (mobile only) */}
-            {showMobileMenu && (
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="relative flex h-10 w-10 items-center justify-center md:hidden"
-                aria-label="Menü öffnen"
-                aria-expanded={menuOpen}
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  className="text-text-dark"
-                >
-                  {menuOpen ? (
-                    <>
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                      <line x1="6" y1="18" x2="18" y2="6" />
-                    </>
-                  ) : (
-                    <>
-                      <line x1="3" y1="6" x2="21" y2="6" />
-                      <line x1="3" y1="12" x2="21" y2="12" />
-                      <line x1="3" y1="18" x2="21" y2="18" />
-                    </>
-                  )}
-                </svg>
-              </button>
-            )}
-          </div>
-        )}
+          {/* Hamburger (mobile only) */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="relative flex h-10 w-10 items-center justify-center md:hidden"
+            aria-label="Menü öffnen"
+            aria-expanded={menuOpen}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              className="text-text-dark"
+            >
+              {menuOpen ? (
+                <>
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                  <line x1="6" y1="18" x2="18" y2="6" />
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile dropdown menu */}
-      {shouldShowMenuLinks && (
+      {showNavLinks && (
         <div
           className={`overflow-hidden border-t border-gray-100 bg-white transition-all duration-300 md:hidden ${
             menuOpen ? "max-h-64" : "max-h-0 border-t-0"
