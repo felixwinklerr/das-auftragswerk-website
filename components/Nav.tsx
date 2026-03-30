@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Das System", href: "#das-system" },
@@ -35,7 +36,7 @@ export default function Nav({ showHeaderCta = true, showNavLinks = true }: NavPr
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-8">
         {/* Logo */}
-        <a href="#" className="shrink-0">
+        <Link href="/" className="shrink-0">
           <Image
             src="/logo-horizontal.png"
             alt="Das Auftragswerk"
@@ -44,7 +45,7 @@ export default function Nav({ showHeaderCta = true, showNavLinks = true }: NavPr
             className="h-8 w-auto md:h-10"
             priority
           />
-        </a>
+        </Link>
 
         {/* Desktop nav links */}
         {showNavLinks && (
