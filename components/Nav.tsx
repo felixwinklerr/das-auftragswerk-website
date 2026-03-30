@@ -10,7 +10,12 @@ const navLinks = [
   { label: "Vergleich", href: "#preis" },
 ];
 
-export default function Nav() {
+type NavProps = {
+  // Orange CTA button in the header (desktop).
+  showHeaderCta?: boolean;
+};
+
+export default function Nav({ showHeaderCta = true }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -55,12 +60,14 @@ export default function Nav() {
 
         {/* Right side: CTA + hamburger */}
         <div className="flex items-center gap-3">
-          <a
-            href="#kontakt"
-            className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105 md:px-5 md:py-2.5"
-          >
-            Kostenloses Erstgespräch
-          </a>
+          {showHeaderCta && (
+            <a
+              href="#kontakt"
+              className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105 md:px-5 md:py-2.5"
+            >
+              Kostenloses Erstgespräch
+            </a>
+          )}
 
           {/* Hamburger (mobile only) */}
           <button

@@ -1,6 +1,11 @@
 import Image from "next/image";
 
-export default function Footer() {
+type FooterProps = {
+  // Sticky mobile CTA bar (orange bottom bar).
+  showStickyCta?: boolean;
+};
+
+export default function Footer({ showStickyCta = true }: FooterProps) {
   return (
     <>
       <footer className="bg-primary py-12 px-6 text-white">
@@ -51,14 +56,16 @@ export default function Footer() {
       </footer>
 
       {/* Sticky mobile CTA bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-accent py-3 px-4 md:hidden">
-        <a
-          href="#kontakt"
-          className="block w-full text-center font-semibold text-white"
-        >
-          Jetzt anfragen
-        </a>
-      </div>
+      {showStickyCta && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-accent py-3 px-4 md:hidden">
+          <a
+            href="#kontakt"
+            className="block w-full text-center font-semibold text-white"
+          >
+            Jetzt anfragen
+          </a>
+        </div>
+      )}
     </>
   );
 }
