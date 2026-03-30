@@ -67,7 +67,7 @@ export default function Nav({ showHeaderCta = true, showNavLinks = true }: NavPr
         <div className="flex items-center gap-3">
           {showHeaderCta && (
             <a
-              href="#kontakt"
+              href="/termin"
               className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-105 md:px-5 md:py-2.5"
             >
               Kostenloses Erstgespräch
