@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 export default function TerminPage() {
   return (
     <>
-      <Nav showHeaderCta={false} />
-      <main className="bg-white pt-24">
+      <Nav showHeaderCta={false} showLinks={false} showMobileMenu={false} />
+      <main className="bg-white pt-20 md:pt-24">
         <div className="mx-auto max-w-3xl px-6 pb-6">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-primary">
@@ -60,7 +60,7 @@ export default function TerminPage() {
         </div>
       </main>
 
-      <Footer showStickyCta={false} />
+      <Footer showStickyCta={false} variant="mini" />
     </>
   );
 }

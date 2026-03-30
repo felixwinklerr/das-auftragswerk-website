@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const calendarSrc =
   "https://links.dasauftragswerk.de/widget/booking/FTvBMxR1K7H3NEe3WrqM";
@@ -9,11 +9,17 @@ const calendarId = "FTvBMxR1K7H3NEe3WrqM_1774414805284";
 export default function BookingEmbed() {
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    // Make sure the overlay never blocks interaction if `onLoad` doesn't fire.
+    const t = window.setTimeout(() => setLoading(false), 4000);
+    return () => window.clearTimeout(t);
+  }, []);
+
   return (
     <div className="mt-8">
       <div className="relative overflow-hidden rounded-xl shadow-sm bg-white">
         {loading && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/70">
+          <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-white/70">
             <span className="animate-pulse text-sm text-text-muted">
               Kalender lädt...
             </span>
